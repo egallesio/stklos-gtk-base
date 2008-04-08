@@ -1,0 +1,71 @@
+;;; Test for ScmPkg package stklos-gtk-base
+;;;
+;;;           Author: Erick Gallesio [eg@essi.fr]
+;;;    Creation date: 01-Aug-2007 19:34 (eg)
+;;; Last file update:  5-Aug-2007 18:22 (eg)
+;;;
+
+
+;;;;
+;;;; Callbacks
+;;;;
+(define (hello widget data)
+  (printf "Hello: ~S was pressed\n" data))
+
+(define (delete-event widget event data)
+  (gtk-main-quit)
+  #f)
+
+
+(define (destroy widget data)
+  (printf "destroy widget=~S data=~S\n" widget data)
+  (gtk-main-quit))
+
+;;;;
+;;;; Application
+;;;; 
+
+(define window #f)
+(define button #f)
+(define box1 #f)
+
+
+(gtk-init (void) (void))
+
+;; Window
+(set! window (gtk-window-new 0))
+(gtk-window-set-title window "Hello Buttons!")
+(g-signal-connect window "delete_event" delete-event 1)
+(gtk-container-set-border-width window 10)
+
+;; box1
+(set! box1 (gtk-hbox-new #f 0))
+(gtk-container-add window  box1)
+
+;; button1
+(set! button (gtk-button-new-with-label "Button 1"))
+(g-signal-connect button "clicked" hello "Button 1")
+(gtk-box-pack-start box1 button #t #t 0)
+(gtk-widget-show button)
+
+;; button2
+(set! button (gtk-button-new-with-label "Button 2"))
+(g-signal-connect button "clicked" hello "Button 2")
+(gtk-box-pack-start box1 button #t #t 0)
+(gtk-widget-show button)
+
+
+(gtk-widget-show box1)
+(gtk-widget-show window)
+
+
+
+;; ----------------------------------------------------------------------
+;;	run ...
+;; ----------------------------------------------------------------------
+(define (run names)
+  (let ((thr (make-thread (lambda ()
+			    (gtk-main)
+			    (eprintf "End of GTK+ thread\n")))))
+    (thread-join! (thread-start! thr))
+    (exit 0)))

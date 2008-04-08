@@ -1,0 +1,5244 @@
+Documentation for stklos-gtk-base
+=================================
+
+
+Description
+-----------
+
+
+Package API
+-----------
+g-object-set-data
+~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(g-object-set-data widget0 string1 obj2)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *string1*: todo
+
+- *obj2*: todo
+
+g-object-get-data
+~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(g-object-get-data widget0 string1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *string1*: todo
+
+gtk-window-new
+~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-window-new long0)
+---------------------------------------------------------
+
+*Parameters*::
+- *long0*: todo
+
+gtk-window-set-title
+~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-window-set-title widget0 string1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *string1*: todo
+
+gtk-window-get-title
+~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-window-get-title widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-window-set-default-size
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-window-set-default-size widget0 long1 long2)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *long1*: todo
+
+- *long2*: todo
+
+gtk-window-get-position
+~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-window-get-position widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-window-set-position
+~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-window-set-position widget0 long1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *long1*: todo
+
+gtk-window-set-resizable
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-window-set-resizable widget0 boolean1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *boolean1*: todo
+
+gtk-window-get-resizable
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-window-get-resizable widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-window-get-modal
+~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-window-get-modal widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-window-set-modal
+~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-window-set-modal widget0 boolean1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *boolean1*: todo
+
+gtk-window-set-transient-for
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-window-set-transient-for widget0 widget1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+gtk-window-maximize
+~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-window-maximize widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-message-dialog-new
+~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-message-dialog-new
+  widget0
+  long1
+  long2
+  long3
+  string4)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *long1*: todo
+
+- *long2*: todo
+
+- *long3*: todo
+
+- *string4*: todo
+
+gtk-window-set-icon-from-file
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-window-set-icon-from-file
+  widget0
+  string1
+  widget2)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *string1*: todo
+
+- *widget2*: todo
+
+gtk-window-set-keep-above
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-window-set-keep-above widget0 boolean1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *boolean1*: todo
+
+gtk-window-set-keep-below
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-window-set-keep-below widget0 boolean1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *boolean1*: todo
+
+gtk-about-dialog-set-version
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-about-dialog-set-version widget0 string1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *string1*: todo
+
+gtk-window-set-policy
+~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-window-set-policy widget0 long1 long2 long3)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *long1*: todo
+
+- *long2*: todo
+
+- *long3*: todo
+
+gtk-table-new
+~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-table-new long0 long1 boolean2)
+---------------------------------------------------------
+
+*Parameters*::
+- *long0*: todo
+
+- *long1*: todo
+
+- *boolean2*: todo
+
+gtk-table-attach-defaults
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-table-attach-defaults
+  widget0
+  widget1
+  long2
+  long3
+  long4
+  long5)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+- *long2*: todo
+
+- *long3*: todo
+
+- *long4*: todo
+
+- *long5*: todo
+
+gtk-container-add
+~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-container-add widget0 widget1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+gtk-container-remove
+~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-container-remove widget0 widget1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+gtk-container-set-border-width
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-container-set-border-width widget0 long1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *long1*: todo
+
+gtk-hbox-new
+~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-hbox-new boolean0 long1)
+---------------------------------------------------------
+
+*Parameters*::
+- *boolean0*: todo
+
+- *long1*: todo
+
+gtk-vbox-new
+~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-vbox-new boolean0 long1)
+---------------------------------------------------------
+
+*Parameters*::
+- *boolean0*: todo
+
+- *long1*: todo
+
+gtk-box-pack-start
+~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-box-pack-start
+  widget0
+  widget1
+  boolean2
+  boolean3
+  long4)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+- *boolean2*: todo
+
+- *boolean3*: todo
+
+- *long4*: todo
+
+gtk-box-pack-end
+~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-box-pack-end
+  widget0
+  widget1
+  boolean2
+  boolean3
+  long4)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+- *boolean2*: todo
+
+- *boolean3*: todo
+
+- *long4*: todo
+
+gtk-box-pack-start-defaults
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-box-pack-start-defaults widget0 widget1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+gtk-box-pack-end-defaults
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-box-pack-end-defaults widget0 widget1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+gtk-button-new
+~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-button-new)
+---------------------------------------------------------
+
+gtk-button-new-with-label
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-button-new-with-label string0)
+---------------------------------------------------------
+
+*Parameters*::
+- *string0*: todo
+
+gtk-button-new-from-stock
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-button-new-from-stock string0)
+---------------------------------------------------------
+
+*Parameters*::
+- *string0*: todo
+
+gtk-button-new-with-mnemonic
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-button-new-with-mnemonic string0)
+---------------------------------------------------------
+
+*Parameters*::
+- *string0*: todo
+
+gtk-button-set-use-stock
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-button-set-use-stock widget0 boolean1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *boolean1*: todo
+
+gtk-button-set-label
+~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-button-set-label widget0 string1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *string1*: todo
+
+gtk-button-get-label
+~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-button-get-label widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-button-set-image
+~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-button-set-image widget0 widget1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+gtk-button-get-image
+~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-button-get-image widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-button-get-relief
+~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-button-get-relief widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-button-set-relief
+~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-button-set-relief widget0 long1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *long1*: todo
+
+gtk-toggle-button-new
+~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-toggle-button-new)
+---------------------------------------------------------
+
+gtk-toggle-button-new-with-label
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-toggle-button-new-with-label string0)
+---------------------------------------------------------
+
+*Parameters*::
+- *string0*: todo
+
+gtk-toggle-button-get-active
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-toggle-button-get-active widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-toggle-button-set-active
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-toggle-button-set-active widget0 boolean1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *boolean1*: todo
+
+gtk-check-button-new-with-label
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-check-button-new-with-label string0)
+---------------------------------------------------------
+
+*Parameters*::
+- *string0*: todo
+
+gtk-entry-new
+~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-entry-new)
+---------------------------------------------------------
+
+gtk-entry-get-text
+~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-entry-get-text widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-entry-set-text
+~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-entry-set-text widget0 string1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *string1*: todo
+
+gtk-entry-set-visibility
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-entry-set-visibility widget0 boolean1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *boolean1*: todo
+
+gtk-editable-delete-text
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-editable-delete-text widget0 long1 long2)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *long1*: todo
+
+- *long2*: todo
+
+gtk-editable-get-chars
+~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-editable-get-chars widget0 long1 long2)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *long1*: todo
+
+- *long2*: todo
+
+gtk-editable-set-editable
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-editable-set-editable widget0 boolean1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *boolean1*: todo
+
+gtk-editable-select-region
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-editable-select-region widget0 long1 long2)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *long1*: todo
+
+- *long2*: todo
+
+gtk-text-buffer-new
+~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-text-buffer-new widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-text-buffer-set-text
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-text-buffer-set-text widget0 string1 long2)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *string1*: todo
+
+- *long2*: todo
+
+gtk-text-buffer-insert-at-cursor
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-text-buffer-insert-at-cursor
+  widget0
+  string1
+  long2)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *string1*: todo
+
+- *long2*: todo
+
+gtk-text-buffer-get-insert
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-text-buffer-get-insert widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-text-buffer-get-start-iter
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-text-buffer-get-start-iter widget0 widget1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+gtk-text-buffer-get-end-iter
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-text-buffer-get-end-iter widget0 widget1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+gtk-text-buffer-get-bounds
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-text-buffer-get-bounds
+  widget0
+  widget1
+  widget2)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+- *widget2*: todo
+
+gtk-text-buffer-get-selection-bounds
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-text-buffer-get-selection-bounds
+  widget0
+  widget1
+  widget2)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+- *widget2*: todo
+
+gtk-text-buffer-get-iter-at-offset
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-text-buffer-get-iter-at-offset
+  widget0
+  widget1
+  long2)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+- *long2*: todo
+
+gtk-text-buffer-get-text
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-text-buffer-get-text
+  widget0
+  widget1
+  widget2
+  boolean3)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+- *widget2*: todo
+
+- *boolean3*: todo
+
+gtk-text-buffer-insert
+~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-text-buffer-insert
+  widget0
+  widget1
+  string2
+  long3)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+- *string2*: todo
+
+- *long3*: todo
+
+gtk-text-buffer-create-tag
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-text-buffer-create-tag
+  widget0
+  string1
+  string2
+  long3
+  widget4)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *string1*: todo
+
+- *string2*: todo
+
+- *long3*: todo
+
+- *widget4*: todo
+
+gtk-text-buffer-insert-with-tags-by-name
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-text-buffer-insert-with-tags-by-name
+  widget0
+  widget1
+  string2
+  long3
+  string4
+  string5
+  string6
+  widget7)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+- *string2*: todo
+
+- *long3*: todo
+
+- *string4*: todo
+
+- *string5*: todo
+
+- *string6*: todo
+
+- *widget7*: todo
+
+gtk-text-buffer-apply-tag-by-name
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-text-buffer-apply-tag-by-name
+  widget0
+  string1
+  widget2
+  widget3)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *string1*: todo
+
+- *widget2*: todo
+
+- *widget3*: todo
+
+gtk-text-buffer-remove-tag-by-name
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-text-buffer-remove-tag-by-name
+  widget0
+  string1
+  widget2
+  widget3)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *string1*: todo
+
+- *widget2*: todo
+
+- *widget3*: todo
+
+gtk-text-buffer-remove-all-tags
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-text-buffer-remove-all-tags
+  widget0
+  widget1
+  widget2)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+- *widget2*: todo
+
+gtk-text-buffer-get-tag-table
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-text-buffer-get-tag-table widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-text-buffer-select-range
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-text-buffer-select-range
+  widget0
+  widget1
+  widget2)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+- *widget2*: todo
+
+gtk-text-buffer-get-selection-bound
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-text-buffer-get-selection-bound widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-text-buffer-get-line-count
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-text-buffer-get-line-count widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-text-buffer-create-mark
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-text-buffer-create-mark
+  widget0
+  string1
+  widget2
+  boolean3)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *string1*: todo
+
+- *widget2*: todo
+
+- *boolean3*: todo
+
+gtk-text-buffer-get-iter-at-mark
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-text-buffer-get-iter-at-mark
+  widget0
+  widget1
+  widget2)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+- *widget2*: todo
+
+gtk-text-buffer-get-iter-at-line
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-text-buffer-get-iter-at-line
+  widget0
+  widget1
+  long2)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+- *long2*: todo
+
+gtk-text-buffer-delete
+~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-text-buffer-delete widget0 widget1 widget2)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+- *widget2*: todo
+
+gtk-text-buffer-delete-mark
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-text-buffer-delete-mark widget0 widget1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+gtk-text-buffer-delete-mark-by-name
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-text-buffer-delete-mark-by-name
+  widget0
+  string1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *string1*: todo
+
+gtk-text-buffer-place-cursor
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-text-buffer-place-cursor widget0 widget1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+gtk-text-buffer-copy-clipboard
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-text-buffer-copy-clipboard widget0 widget1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+gtk-text-buffer-cut-clipboard
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-text-buffer-cut-clipboard
+  widget0
+  widget1
+  boolean2)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+- *boolean2*: todo
+
+gtk-text-buffer-paste-clipboard
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-text-buffer-paste-clipboard
+  widget0
+  widget1
+  widget2
+  boolean3)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+- *widget2*: todo
+
+- *boolean3*: todo
+
+gtk-scrolled-window-new
+~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-scrolled-window-new widget0 widget1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+gtk-scrolled-window-set-policy
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-scrolled-window-set-policy
+  widget0
+  long1
+  long2)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *long1*: todo
+
+- *long2*: todo
+
+gtk-scrolled-window-set-shadow-type
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-scrolled-window-set-shadow-type
+  widget0
+  long1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *long1*: todo
+
+gtk-scrolled-window-add-with-viewport
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-scrolled-window-add-with-viewport
+  widget0
+  widget1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+gtk-scrolled-window-get-hadjustment
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-scrolled-window-get-hadjustment widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-scrolled-window-get-vadjustment
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-scrolled-window-get-vadjustment widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-text-view-new-with-buffer
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-text-view-new-with-buffer widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-text-view-set-wrap-mode
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-text-view-set-wrap-mode widget0 long1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *long1*: todo
+
+gtk-text-view-set-editable
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-text-view-set-editable widget0 boolean1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *boolean1*: todo
+
+gtk-text-view-set-border-window-size
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-text-view-set-border-window-size
+  widget0
+  long1
+  long2)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *long1*: todo
+
+- *long2*: todo
+
+gtk-text-view-move-mark-onscreen
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-text-view-move-mark-onscreen
+  widget0
+  widget1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+gtk-text-view-scroll-to-mark
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-text-view-scroll-to-mark
+  widget0
+  widget1
+  double2
+  boolean3
+  double4
+  double5)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+- *double2*: todo
+
+- *boolean3*: todo
+
+- *double4*: todo
+
+- *double5*: todo
+
+gtk-text-view-scroll-mark-onscreen
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-text-view-scroll-mark-onscreen
+  widget0
+  widget1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+gtk-text-view-set-pixels-inside-wrap
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-text-view-set-pixels-inside-wrap
+  widget0
+  long1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *long1*: todo
+
+gtk-text-view-get-pixels-inside-wrap
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-text-view-get-pixels-inside-wrap widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-text-view-set-pixels-above-lines
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-text-view-set-pixels-above-lines
+  widget0
+  long1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *long1*: todo
+
+gtk-text-view-get-pixels-above-lines
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-text-view-get-pixels-above-lines widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-text-view-set-cursor-visible
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-text-view-set-cursor-visible
+  widget0
+  boolean1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *boolean1*: todo
+
+gtk-text-view-window-to-buffer-coords
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-text-view-window-to-buffer-coords
+  widget0
+  long1
+  long2
+  long3
+  widget4
+  widget5)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *long1*: todo
+
+- *long2*: todo
+
+- *long3*: todo
+
+- *widget4*: todo
+
+- *widget5*: todo
+
+gtk-text-iter-forward-search
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-text-iter-forward-search
+  widget0
+  string1
+  long2
+  widget3
+  widget4
+  widget5)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *string1*: todo
+
+- *long2*: todo
+
+- *widget3*: todo
+
+- *widget4*: todo
+
+- *widget5*: todo
+
+gtk-text-iter-forward-visible-cursor-position
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-text-iter-forward-visible-cursor-position
+  widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-text-iter-forward-to-line-end
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-text-iter-forward-to-line-end widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-text-iter-set-line
+~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-text-iter-set-line widget0 long1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *long1*: todo
+
+gtk-text-iter-set-line-offset
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-text-iter-set-line-offset widget0 long1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *long1*: todo
+
+gtk-text-iter-set-line-index
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-text-iter-set-line-index widget0 long1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *long1*: todo
+
+gtk-text-iter-get-text
+~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-text-iter-get-text widget0 widget1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+gtk-text-iter-get-line
+~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-text-iter-get-line widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-text-view-new
+~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-text-view-new)
+---------------------------------------------------------
+
+gtk-text-view-get-buffer
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-text-view-get-buffer widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-text-view-set-buffer
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-text-view-set-buffer widget0 pointer1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *pointer1*: todo
+
+gtk-text-tag-table-remove
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-text-tag-table-remove widget0 widget1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+gtk-text-new
+~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-text-new widget0 widget1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+gtk-text-set-editable
+~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-text-set-editable widget0 long1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *long1*: todo
+
+gtk-text-insert
+~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-text-insert
+  widget0
+  widget1
+  widget2
+  widget3
+  string4
+  long5)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+- *widget2*: todo
+
+- *widget3*: todo
+
+- *string4*: todo
+
+- *long5*: todo
+
+gtk-text-set-adjustments
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-text-set-adjustments
+  widget0
+  widget1
+  widget2)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+- *widget2*: todo
+
+gtk-text-get-length
+~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-text-get-length widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-text-set-word-wrap
+~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-text-set-word-wrap widget0 long1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *long1*: todo
+
+gtk-text-backward-delete
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-text-backward-delete widget0 long1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *long1*: todo
+
+gtk-text-forward-delete
+~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-text-forward-delete widget0 long1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *long1*: todo
+
+gtk-text-set-point
+~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-text-set-point widget0 long1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *long1*: todo
+
+gtk-toolbar-new
+~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-toolbar-new)
+---------------------------------------------------------
+
+gtk-toolbar-insert
+~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-toolbar-insert widget0 pointer1 long2)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *pointer1*: todo
+
+- *long2*: todo
+
+gtk-toolbar-get-orientation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-toolbar-get-orientation widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-toolbar-set-orientation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-toolbar-set-orientation widget0 long)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *long*: todo
+
+gtk-toolbar-get-style
+~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-toolbar-get-style widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-toolbar-set-style
+~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-toolbar-set-style widget0 long)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *long*: todo
+
+gtk-tool-button-new
+~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-tool-button-new widget0 string1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *string1*: todo
+
+gtk-tool-button-get-icon-widget
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-tool-button-get-icon-widget widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-tool-button-set-icon-widget
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-tool-button-set-icon-widget widget0 widget1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+gtk-separator-tool-item-new
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-separator-tool-item-new)
+---------------------------------------------------------
+
+gdk-font-load
+~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gdk-font-load string0)
+---------------------------------------------------------
+
+*Parameters*::
+- *string0*: todo
+
+gdk-pixmap-new
+~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gdk-pixmap-new widget0 long1 long2 long3)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *long1*: todo
+
+- *long2*: todo
+
+- *long3*: todo
+
+gdk-pixmap-create-from-xpm
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gdk-pixmap-create-from-xpm
+  widget0
+  widget1
+  widget2
+  string3)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+- *widget2*: todo
+
+- *string3*: todo
+
+gdk-pixmap-colormap-create-from-xpm
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gdk-pixmap-colormap-create-from-xpm
+  widget0
+  widget1
+  widget2
+  widget3
+  string4)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+- *widget2*: todo
+
+- *widget3*: todo
+
+- *string4*: todo
+
+gdk-draw-rectangle
+~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gdk-draw-rectangle
+  widget0
+  widget1
+  boolean2
+  long3
+  long4
+  long5
+  long6)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+- *boolean2*: todo
+
+- *long3*: todo
+
+- *long4*: todo
+
+- *long5*: todo
+
+- *long6*: todo
+
+gdk-draw-arc
+~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gdk-draw-arc
+  widget0
+  widget1
+  boolean2
+  long3
+  long4
+  long5
+  long6
+  long7
+  long8)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+- *boolean2*: todo
+
+- *long3*: todo
+
+- *long4*: todo
+
+- *long5*: todo
+
+- *long6*: todo
+
+- *long7*: todo
+
+- *long8*: todo
+
+gdk-draw-line
+~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gdk-draw-line
+  widget0
+  widget1
+  long2
+  long3
+  long4
+  long5)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+- *long2*: todo
+
+- *long3*: todo
+
+- *long4*: todo
+
+- *long5*: todo
+
+gdk-draw-point
+~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gdk-draw-point widget0 widget1 long2 long3)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+- *long2*: todo
+
+- *long3*: todo
+
+gdk-draw-layout
+~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gdk-draw-layout
+  widget0
+  widget1
+  long2
+  long3
+  widget4)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+- *long2*: todo
+
+- *long3*: todo
+
+- *widget4*: todo
+
+gdk-draw-drawable
+~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gdk-draw-drawable
+  widget0
+  widget1
+  widget2
+  long3
+  long4
+  long5
+  long6
+  long7
+  long8)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+- *widget2*: todo
+
+- *long3*: todo
+
+- *long4*: todo
+
+- *long5*: todo
+
+- *long6*: todo
+
+- *long7*: todo
+
+- *long8*: todo
+
+gdk-gc-new
+~~~~~~~~~~
+
+---------------------------------------------------------
+(gdk-gc-new widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gdk-gc-set-rgb-fg-color
+~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gdk-gc-set-rgb-fg-color widget0 widget1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+gdk-gc-set-rgb-bg-color
+~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gdk-gc-set-rgb-bg-color widget0 widget1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+gdk-gc-set-foreground
+~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gdk-gc-set-foreground widget0 widget1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+gdk-gc-set-background
+~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gdk-gc-set-background widget0 widget1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+gdk-gc-set-colormap
+~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gdk-gc-set-colormap widget0 widget1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+gdk-color-alloc
+~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gdk-color-alloc widget0 widget1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+gdk-color-parse
+~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gdk-color-parse string0 widget1)
+---------------------------------------------------------
+
+*Parameters*::
+- *string0*: todo
+
+- *widget1*: todo
+
+gdk-colormap-get-system
+~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gdk-colormap-get-system)
+---------------------------------------------------------
+
+gdk-colormap-alloc-color
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gdk-colormap-alloc-color
+  widget0
+  widget1
+  boolean2
+  boolean3)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+- *boolean2*: todo
+
+- *boolean3*: todo
+
+gdk-get-default-root-window
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gdk-get-default-root-window)
+---------------------------------------------------------
+
+gdk-rgb-find-color
+~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gdk-rgb-find-color widget0 widget1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+gdk-drawable-set-colormap
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gdk-drawable-set-colormap widget0 widget1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+gdk-drawable-get-size
+~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gdk-drawable-get-size widget0 widget1 widget2)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+- *widget2*: todo
+
+gdk-keymap-translate-keyboard-state
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gdk-keymap-translate-keyboard-state
+  widget0
+  long1
+  long2
+  long3
+  widget4
+  widget5
+  widget6
+  widget7)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *long1*: todo
+
+- *long2*: todo
+
+- *long3*: todo
+
+- *widget4*: todo
+
+- *widget5*: todo
+
+- *widget6*: todo
+
+- *widget7*: todo
+
+gdk-window-process-all-updates
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gdk-window-process-all-updates)
+---------------------------------------------------------
+
+gdk-window-get-geometry
+~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gdk-window-get-geometry
+  widget0
+  widget1
+  widget2
+  widget3
+  string4
+  widget5)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+- *widget2*: todo
+
+- *widget3*: todo
+
+- *string4*: todo
+
+- *widget5*: todo
+
+gdk-screen-get-default
+~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gdk-screen-get-default)
+---------------------------------------------------------
+
+gdk-screen-get-width
+~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gdk-screen-get-width widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gdk-screen-get-height
+~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gdk-screen-get-height widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gdk-screen-width
+~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gdk-screen-width)
+---------------------------------------------------------
+
+gdk-screen-height
+~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gdk-screen-height)
+---------------------------------------------------------
+
+gdk-flush
+~~~~~~~~~
+
+---------------------------------------------------------
+(gdk-flush)
+---------------------------------------------------------
+
+gdk-init
+~~~~~~~~
+
+---------------------------------------------------------
+(gdk-init widget0 widget1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+gdk-display-get-default
+~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gdk-display-get-default)
+---------------------------------------------------------
+
+gdk-display-get-pointer
+~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gdk-display-get-pointer
+  widget0
+  widget1
+  widget2
+  widget3
+  widget4)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+- *widget2*: todo
+
+- *widget3*: todo
+
+- *widget4*: todo
+
+gtk-image-new
+~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-image-new)
+---------------------------------------------------------
+
+gtk-image-new-from-pixmap
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-image-new-from-pixmap widget0 widget1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+gtk-image-set-from-pixbuf
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-image-set-from-pixbuf widget0 widget1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+gtk-image-set-from-pixmap
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-image-set-from-pixmap
+  widget0
+  widget1
+  widget2)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+- *widget2*: todo
+
+gtk-image-set
+~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-image-set widget0 widget1 widget2)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+- *widget2*: todo
+
+gtk-image-set-from-file
+~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-image-set-from-file widget0 string1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *string1*: todo
+
+gtk-image-new-from-file
+~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-image-new-from-file string0)
+---------------------------------------------------------
+
+*Parameters*::
+- *string0*: todo
+
+gtk-image-new-from-stock
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-image-new-from-stock string0 long1)
+---------------------------------------------------------
+
+*Parameters*::
+- *string0*: todo
+
+- *long1*: todo
+
+gtk-pixmap-new
+~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-pixmap-new widget0 widget1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+gtk-drawing-area-new
+~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-drawing-area-new)
+---------------------------------------------------------
+
+gtk-widget-queue-draw
+~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-widget-queue-draw widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-widget-get-colormap
+~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-widget-get-colormap widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-widget-get-parent-window
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-widget-get-parent-window widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-widget-create-pango-layout
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-widget-create-pango-layout widget0 string1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *string1*: todo
+
+gtk-vscrollbar-new
+~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-vscrollbar-new widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-label-new
+~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-label-new string0)
+---------------------------------------------------------
+
+*Parameters*::
+- *string0*: todo
+
+gtk-label-set-text
+~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-label-set-text widget0 string1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *string1*: todo
+
+gtk-label-get-text
+~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-label-get-text widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-label-set-line-wrap
+~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-label-set-line-wrap widget0 boolean1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *boolean1*: todo
+
+gtk-label-set-selectable
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-label-set-selectable widget0 boolean1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *boolean1*: todo
+
+gtk-label-set-use-markup
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-label-set-use-markup widget0 boolean1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *boolean1*: todo
+
+gtk-label-set-justify
+~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-label-set-justify widget0 long1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *long1*: todo
+
+gtk-label-get-width-chars
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-label-get-width-chars widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-label-get-max-width-chars
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-label-get-max-width-chars widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-label-set-markup-with-mnemonic
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-label-set-markup-with-mnemonic
+  widget0
+  string1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *string1*: todo
+
+gtk-frame-new
+~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-frame-new widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-frame-set-label-align
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-frame-set-label-align widget0 long1 long2)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *long1*: todo
+
+- *long2*: todo
+
+gtk-frame-set-label
+~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-frame-set-label widget0 string1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *string1*: todo
+
+gtk-frame-get-label
+~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-frame-get-label widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-frame-get-shadow-type
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-frame-get-shadow-type widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-frame-set-shadow-type
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-frame-set-shadow-type widget0 long1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *long1*: todo
+
+gtk-aspect-frame-new
+~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-aspect-frame-new
+  string0
+  long1
+  long2
+  long3
+  boolean4)
+---------------------------------------------------------
+
+*Parameters*::
+- *string0*: todo
+
+- *long1*: todo
+
+- *long2*: todo
+
+- *long3*: todo
+
+- *boolean4*: todo
+
+gtk-aspect-frame-set
+~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-aspect-frame-set
+  widget0
+  long1
+  long2
+  long3
+  boolean4)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *long1*: todo
+
+- *long2*: todo
+
+- *long3*: todo
+
+- *boolean4*: todo
+
+gtk-radio-button-new
+~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-radio-button-new widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-radio-button-new-with-label
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-radio-button-new-with-label widget0 string1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *string1*: todo
+
+gtk-radio-button-new-from-widget
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-radio-button-new-from-widget widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-radio-button-new-with-label-from-widget
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-radio-button-new-with-label-from-widget
+  widget0
+  string1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *string1*: todo
+
+gtk-notebook-new
+~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-notebook-new)
+---------------------------------------------------------
+
+gtk-notebook-set-tab-pos
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-notebook-set-tab-pos widget0 long1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *long1*: todo
+
+gtk-notebook-popup-enable
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-notebook-popup-enable widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-notebook-insert-page
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-notebook-insert-page
+  widget0
+  widget1
+  widget2
+  long3)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+- *widget2*: todo
+
+- *long3*: todo
+
+gtk-notebook-remove-page
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-notebook-remove-page widget0 long1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *long1*: todo
+
+gtk-notebook-get-current-page
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-notebook-get-current-page widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-notebook-set-current-page
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-notebook-set-current-page widget0 long1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *long1*: todo
+
+gtk-notebook-set-tab-label-text
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-notebook-set-tab-label-text
+  widget0
+  widget1
+  string2)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+- *string2*: todo
+
+gtk-adjustment-new
+~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-adjustment-new
+  double0
+  double1
+  double2
+  double3
+  double4
+  double5)
+---------------------------------------------------------
+
+*Parameters*::
+- *double0*: todo
+
+- *double1*: todo
+
+- *double2*: todo
+
+- *double3*: todo
+
+- *double4*: todo
+
+- *double5*: todo
+
+gtk-adjustment-get-value
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-adjustment-get-value widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-adjustment-set-value
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-adjustment-set-value widget0 double1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *double1*: todo
+
+gtk-range-get-adjustment
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-range-get-adjustment widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-range-get-value
+~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-range-get-value widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-range-set-value
+~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-range-set-value widget0 double1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *double1*: todo
+
+gtk-scale-set-draw-value
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-scale-set-draw-value widget0 boolean1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *boolean1*: todo
+
+gtk-scale-set-value-pos
+~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-scale-set-value-pos widget0 long1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *long1*: todo
+
+gtk-hscale-new
+~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-hscale-new widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-hscale-new-with-range
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-hscale-new-with-range
+  double0
+  double1
+  double2)
+---------------------------------------------------------
+
+*Parameters*::
+- *double0*: todo
+
+- *double1*: todo
+
+- *double2*: todo
+
+gtk-vscale-new-with-range
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-vscale-new-with-range
+  double0
+  double1
+  double2)
+---------------------------------------------------------
+
+*Parameters*::
+- *double0*: todo
+
+- *double1*: todo
+
+- *double2*: todo
+
+gtk-spin-button-new
+~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-spin-button-new widget0 double1 long2)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *double1*: todo
+
+- *long2*: todo
+
+gtk-spin-button-new-with-range
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-spin-button-new-with-range
+  double0
+  double1
+  double2)
+---------------------------------------------------------
+
+*Parameters*::
+- *double0*: todo
+
+- *double1*: todo
+
+- *double2*: todo
+
+gtk-spin-button-get-value-as-int
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-spin-button-get-value-as-int widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-spin-button-get-value
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-spin-button-get-value widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-spin-button-set-wrap
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-spin-button-set-wrap widget0 boolean1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *boolean1*: todo
+
+gtk-spin-button-set-value
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-spin-button-set-value widget0 double1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *double1*: todo
+
+gtk-arrow-new
+~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-arrow-new long0 long1)
+---------------------------------------------------------
+
+*Parameters*::
+- *long0*: todo
+
+- *long1*: todo
+
+gtk-file-chooser-dialog-new
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-file-chooser-dialog-new
+  string0
+  widget1
+  long2
+  string3
+  long4
+  string5
+  long6
+  widget7)
+---------------------------------------------------------
+
+*Parameters*::
+- *string0*: todo
+
+- *widget1*: todo
+
+- *long2*: todo
+
+- *string3*: todo
+
+- *long4*: todo
+
+- *string5*: todo
+
+- *long6*: todo
+
+- *widget7*: todo
+
+gtk-file-chooser-widget-new
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-file-chooser-widget-new long0)
+---------------------------------------------------------
+
+*Parameters*::
+- *long0*: todo
+
+gtk-dialog-run
+~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-dialog-run widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-file-chooser-get-filename
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-file-chooser-get-filename widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-file-chooser-set-filename
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-file-chooser-set-filename widget0 string1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *string1*: todo
+
+gtk-file-filter-new
+~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-file-filter-new)
+---------------------------------------------------------
+
+gtk-file-filter-add-pattern
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-file-filter-add-pattern widget0 string1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *string1*: todo
+
+gtk-file-filter-set-name
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-file-filter-set-name widget0 string1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *string1*: todo
+
+gtk-file-chooser-add-filter
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-file-chooser-add-filter widget0 widget1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+gtk-font-selection-dialog-new
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-font-selection-dialog-new string0)
+---------------------------------------------------------
+
+*Parameters*::
+- *string0*: todo
+
+gtk-font-selection-dialog-get-font-name
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-font-selection-dialog-get-font-name widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-font-selection-new
+~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-font-selection-new)
+---------------------------------------------------------
+
+gtk-font-selection-get-font-name
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-font-selection-get-font-name widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-font-selection-set-font-name
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-font-selection-set-font-name
+  widget0
+  string1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *string1*: todo
+
+gtk-color-selection-new
+~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-color-selection-new)
+---------------------------------------------------------
+
+gtk-color-selection-set-has-opacity-control
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-color-selection-set-has-opacity-control
+  widget0
+  boolean1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *boolean1*: todo
+
+gtk-color-selection-set-current-color
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-color-selection-set-current-color
+  widget0
+  string1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *string1*: todo
+
+gtk-color-selection-get-current-color
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-color-selection-get-current-color
+  widget0
+  widget1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+gtk-color-selection-set-color
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-color-selection-set-color widget0 string1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *string1*: todo
+
+gtk-menu-bar-new
+~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-menu-bar-new)
+---------------------------------------------------------
+
+gtk-menu-shell-append
+~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-menu-shell-append widget0 widget1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+gtk-menu-item-new
+~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-menu-item-new)
+---------------------------------------------------------
+
+gtk-menu-item-new-with-label
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-menu-item-new-with-label string0)
+---------------------------------------------------------
+
+*Parameters*::
+- *string0*: todo
+
+gtk-menu-item-new-with-mnemonic
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-menu-item-new-with-mnemonic string0)
+---------------------------------------------------------
+
+*Parameters*::
+- *string0*: todo
+
+gtk-menu-new
+~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-menu-new)
+---------------------------------------------------------
+
+gtk-menu-item-set-right-justified
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-menu-item-set-right-justified
+  widget0
+  boolean1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *boolean1*: todo
+
+gtk-menu-item-set-submenu
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-menu-item-set-submenu widget0 widget1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+gtk-check-menu-item-new-with-label
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-check-menu-item-new-with-label string0)
+---------------------------------------------------------
+
+*Parameters*::
+- *string0*: todo
+
+gtk-check-menu-item-new-with-mnemonic
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-check-menu-item-new-with-mnemonic string0)
+---------------------------------------------------------
+
+*Parameters*::
+- *string0*: todo
+
+gtk-check-menu-item-get-active
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-check-menu-item-get-active widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-check-menu-item-set-active
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-check-menu-item-set-active widget0 boolean1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *boolean1*: todo
+
+gtk-menu-popup
+~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-menu-popup
+  widget0
+  widget1
+  widget2
+  widget3
+  widget4
+  long5
+  long6)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+- *widget2*: todo
+
+- *widget3*: todo
+
+- *widget4*: todo
+
+- *long5*: todo
+
+- *long6*: todo
+
+gtk-progress-bar-new
+~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-progress-bar-new)
+---------------------------------------------------------
+
+gtk-progress-bar-set-text
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-progress-bar-set-text widget0 string1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *string1*: todo
+
+gtk-progress-bar-set-fraction
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-progress-bar-set-fraction widget0 double1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *double1*: todo
+
+gtk-progress-bar-pulse
+~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-progress-bar-pulse widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-progress-bar-set-pulse-step
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-progress-bar-set-pulse-step widget0 double1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *double1*: todo
+
+gtk-progress-configure
+~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-progress-configure
+  widget0
+  double1
+  double2
+  double3)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *double1*: todo
+
+- *double2*: todo
+
+- *double3*: todo
+
+gtk-progress-set-value
+~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-progress-set-value widget0 double1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *double1*: todo
+
+gtk-statusbar-new
+~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-statusbar-new)
+---------------------------------------------------------
+
+gtk-statusbar-get-context-id
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-statusbar-get-context-id widget0 string1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *string1*: todo
+
+gtk-statusbar-push
+~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-statusbar-push widget0 long1 string2)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *long1*: todo
+
+- *string2*: todo
+
+gtk-statusbar-pop
+~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-statusbar-pop widget0 long1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *long1*: todo
+
+gtk-statusbar-remove
+~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-statusbar-remove widget0 long1 long2)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *long1*: todo
+
+- *long2*: todo
+
+gtk-statusbar-set-has-resize-grip
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-statusbar-set-has-resize-grip
+  widget0
+  boolean1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *boolean1*: todo
+
+gtk-event-box-new
+~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-event-box-new)
+---------------------------------------------------------
+
+gtk-combo-box-new-text
+~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-combo-box-new-text)
+---------------------------------------------------------
+
+gtk-combo-box-append-text
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-combo-box-append-text widget0 string1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *string1*: todo
+
+gtk-combo-box-insert-text
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-combo-box-insert-text widget0 long1 string2)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *long1*: todo
+
+- *string2*: todo
+
+gtk-combo-box-prepend-text
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-combo-box-prepend-text widget0 string1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *string1*: todo
+
+gtk-combo-box-remove-text
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-combo-box-remove-text widget0 long1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *long1*: todo
+
+gtk-combo-box-get-active
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-combo-box-get-active widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-combo-box-set-active
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-combo-box-set-active widget0 long1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *long1*: todo
+
+gtk-combo-box-get-active-text
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-combo-box-get-active-text widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-vseparator-new
+~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-vseparator-new)
+---------------------------------------------------------
+
+gtk-hseparator-new
+~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-hseparator-new)
+---------------------------------------------------------
+
+gtk-editable-copy-clipboard
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-editable-copy-clipboard widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-editable-cut-clipboard
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-editable-cut-clipboard widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-editable-paste-clipboard
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-editable-paste-clipboard widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gdk-atom-intern
+~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gdk-atom-intern string0 long1)
+---------------------------------------------------------
+
+*Parameters*::
+- *string0*: todo
+
+- *long1*: todo
+
+gtk-clipboard-get
+~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-clipboard-get long0)
+---------------------------------------------------------
+
+*Parameters*::
+- *long0*: todo
+
+gtk-clipboard-set-text
+~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-clipboard-set-text widget0 string1 long2)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *string1*: todo
+
+- *long2*: todo
+
+gtk-clipboard-wait-for-text
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-clipboard-wait-for-text widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-clist-new
+~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-clist-new long0)
+---------------------------------------------------------
+
+*Parameters*::
+- *long0*: todo
+
+gtk-clist-set-column-title
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-clist-set-column-title
+  widget0
+  long1
+  string2)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *long1*: todo
+
+- *string2*: todo
+
+gtk-clist-column-titles-show
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-clist-column-titles-show widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-clist-append
+~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-clist-append widget0 widget1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+gtk-clist-set-text
+~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-clist-set-text widget0 long1 long2 string3)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *long1*: todo
+
+- *long2*: todo
+
+- *string3*: todo
+
+gtk-fixed-new
+~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-fixed-new)
+---------------------------------------------------------
+
+gtk-fixed-put
+~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-fixed-put widget0 widget1 long2 long3)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+- *long2*: todo
+
+- *long3*: todo
+
+gtk-fixed-move
+~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-fixed-move widget0 widget1 long2 long3)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+- *long2*: todo
+
+- *long3*: todo
+
+gtk-list-store-new
+~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-list-store-new long0 long1)
+---------------------------------------------------------
+
+*Parameters*::
+- *long0*: todo
+
+- *long1*: todo
+
+gtk-list-store-append
+~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-list-store-append widget0 widget1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+gtk-list-store-set
+~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-list-store-set
+  widget0
+  widget1
+  long2
+  string3
+  long4)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+- *long2*: todo
+
+- *string3*: todo
+
+- *long4*: todo
+
+gtk-list-store-set-value
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-list-store-set-value
+  widget0
+  widget1
+  long2
+  string3)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+- *long2*: todo
+
+- *string3*: todo
+
+gtk-list-store-clear
+~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-list-store-clear widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-list-store-remove
+~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-list-store-remove widget0 widget1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+gtk-list-store-move-before
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-list-store-move-before
+  widget0
+  widget1
+  widget2)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+- *widget2*: todo
+
+gtk-list-store-move-after
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-list-store-move-after
+  widget0
+  widget1
+  widget2)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+- *widget2*: todo
+
+gtk-list-store-insert
+~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-list-store-insert widget0 widget1 widget2)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+- *widget2*: todo
+
+gtk-list-store-insert-with-values
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-list-store-insert-with-values
+  widget0
+  widget1
+  long2
+  long3
+  string4
+  long5)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+- *long2*: todo
+
+- *long3*: todo
+
+- *string4*: todo
+
+- *long5*: todo
+
+gtk-cell-renderer-text-new
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-cell-renderer-text-new)
+---------------------------------------------------------
+
+gtk-tree-view-new-with-model
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-tree-view-new-with-model widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-tree-view-column-new
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-tree-view-column-new)
+---------------------------------------------------------
+
+gtk-tree-view-column-new-with-attributes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-tree-view-column-new-with-attributes
+  string0
+  widget1
+  string2
+  long3
+  widget4)
+---------------------------------------------------------
+
+*Parameters*::
+- *string0*: todo
+
+- *widget1*: todo
+
+- *string2*: todo
+
+- *long3*: todo
+
+- *widget4*: todo
+
+gtk-tree-view-column-pack-start
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-tree-view-column-pack-start
+  widget0
+  widget1
+  boolean2)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+- *boolean2*: todo
+
+gtk-tree-view-append-column
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-tree-view-append-column widget0 widget1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+gtk-tree-view-set-headers-visible
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-tree-view-set-headers-visible
+  widget0
+  boolean1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *boolean1*: todo
+
+gtk-tree-view-set-headers-clickable
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-tree-view-set-headers-clickable
+  widget0
+  boolean1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *boolean1*: todo
+
+gtk-tree-view-get-selection
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-tree-view-get-selection widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-tree-view-get-hadjustment
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-tree-view-get-hadjustment widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-tree-view-get-vadjustment
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-tree-view-get-vadjustment widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-tree-view-column-set-resizable
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-tree-view-column-set-resizable
+  widget0
+  boolean1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *boolean1*: todo
+
+gtk-tree-view-column-set-clickable
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-tree-view-column-set-clickable
+  widget0
+  boolean1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *boolean1*: todo
+
+gtk-tree-view-scroll-to-cell
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-tree-view-scroll-to-cell
+  widget0
+  widget1
+  widget2
+  boolean3
+  long4
+  long5)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+- *widget2*: todo
+
+- *boolean3*: todo
+
+- *long4*: todo
+
+- *long5*: todo
+
+gtk-tree-selection-get-selected
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-tree-selection-get-selected
+  widget0
+  widget1
+  widget2)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+- *widget2*: todo
+
+gtk-tree-selection-select-iter
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-tree-selection-select-iter widget0 widget1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+gtk-tree-selection-select-path
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-tree-selection-select-path widget0 widget1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+gtk-tree-selection-path-is-selected
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-tree-selection-path-is-selected
+  widget0
+  widget1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+gtk-tree-model-get
+~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-tree-model-get
+  widget0
+  widget1
+  long2
+  string3
+  long4)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+- *long2*: todo
+
+- *string3*: todo
+
+- *long4*: todo
+
+gtk-tree-model-get-iter
+~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-tree-model-get-iter widget0 widget1 widget2)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+- *widget2*: todo
+
+gtk-tree-model-get-string-from-iter
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-tree-model-get-string-from-iter
+  widget0
+  widget1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+gtk-tree-path-new-from-string
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-tree-path-new-from-string string0)
+---------------------------------------------------------
+
+*Parameters*::
+- *string0*: todo
+
+gtk-tree-path-free
+~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-tree-path-free widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-tree-path-prev
+~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-tree-path-prev widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-tree-path-next
+~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-tree-path-next widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-tree-sortable-set-sort-column-id
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-tree-sortable-set-sort-column-id
+  widget0
+  long1
+  long2)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *long1*: todo
+
+- *long2*: todo
+
+gtk-expander-new
+~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-expander-new string0)
+---------------------------------------------------------
+
+*Parameters*::
+- *string0*: todo
+
+gtk-expander-new-with-mnemonic
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-expander-new-with-mnemonic string0)
+---------------------------------------------------------
+
+*Parameters*::
+- *string0*: todo
+
+gtk-expander-set-expanded
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-expander-set-expanded widget0 boolean1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *boolean1*: todo
+
+gtk-expander-get-expanded
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-expander-get-expanded widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-expander-set-spacing
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-expander-set-spacing widget0 long1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *long1*: todo
+
+gtk-expander-get-spacing
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-expander-get-spacing widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-tooltips-new
+~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-tooltips-new)
+---------------------------------------------------------
+
+gtk-tooltips-enable
+~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-tooltips-enable widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-tooltips-disable
+~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-tooltips-disable widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-tooltips-set-tip
+~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-tooltips-set-tip
+  widget0
+  widget1
+  string2
+  string3)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+- *string2*: todo
+
+- *string3*: todo
+
+gtk-tooltips-force-window
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-tooltips-force-window widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-init
+~~~~~~~~
+
+---------------------------------------------------------
+(gtk-init widget0 widget1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+gtk-widget-show
+~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-widget-show widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-widget-show-all
+~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-widget-show-all widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-widget-realize
+~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-widget-realize widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-widget-unrealize
+~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-widget-unrealize widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-widget-hide
+~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-widget-hide widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-widget-destroy
+~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-widget-destroy widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-widget-grab-focus
+~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-widget-grab-focus widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-widget-set-size-request
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-widget-set-size-request widget0 long1 long2)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *long1*: todo
+
+- *long2*: todo
+
+gtk-widget-size-request
+~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-widget-size-request widget0 widget1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+gtk-widget-set-usize
+~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-widget-set-usize widget0 long1 long2)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *long1*: todo
+
+- *long2*: todo
+
+gtk-widget-modify-base
+~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-widget-modify-base widget0 long1 long2)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *long1*: todo
+
+- *long2*: todo
+
+gtk-widget-modify-bg
+~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-widget-modify-bg widget0 long1 long2)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *long1*: todo
+
+- *long2*: todo
+
+gtk-widget-set-sensitive
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-widget-set-sensitive widget0 boolean1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *boolean1*: todo
+
+gtk-settings-get-default
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-settings-get-default)
+---------------------------------------------------------
+
+gtk-widget-get-parent
+~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-widget-get-parent widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-widget-set-parent
+~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-widget-set-parent widget0 widget1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+gtk-widget-reparent
+~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-widget-reparent widget0 widget1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+gtk-widget-unparent
+~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-widget-unparent widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-misc-set-alignment
+~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-misc-set-alignment widget0 long1 long2)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *long1*: todo
+
+- *long2*: todo
+
+gtk-main
+~~~~~~~~
+
+---------------------------------------------------------
+(gtk-main)
+---------------------------------------------------------
+
+gtk-main-iteration
+~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-main-iteration)
+---------------------------------------------------------
+
+gtk-main-iteration-do
+~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-main-iteration-do boolean0)
+---------------------------------------------------------
+
+*Parameters*::
+- *boolean0*: todo
+
+gtk-events-pending
+~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-events-pending)
+---------------------------------------------------------
+
+gtk-exit
+~~~~~~~~
+
+---------------------------------------------------------
+(gtk-exit long0)
+---------------------------------------------------------
+
+*Parameters*::
+- *long0*: todo
+
+gtk-main-quit
+~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-main-quit)
+---------------------------------------------------------
+
+gtk-rc-parse
+~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-rc-parse string0)
+---------------------------------------------------------
+
+*Parameters*::
+- *string0*: todo
+
+gtk-rc-parse-string
+~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-rc-parse-string string0)
+---------------------------------------------------------
+
+*Parameters*::
+- *string0*: todo
+
+gtk-rc-reparse-all
+~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-rc-reparse-all)
+---------------------------------------------------------
+
+gtk-rc-reset-styles
+~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-rc-reset-styles widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+gtk-rc-add-default-file
+~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-rc-add-default-file string0)
+---------------------------------------------------------
+
+*Parameters*::
+- *string0*: todo
+
+gtk-widget-set-name
+~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-widget-set-name widget0 string1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *string1*: todo
+
+gtk-check-version
+~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-check-version long0 long1 long2)
+---------------------------------------------------------
+
+*Parameters*::
+- *long0*: todo
+
+- *long1*: todo
+
+- *long2*: todo
+
+gtk-drag-source-set
+~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-drag-source-set
+  widget0
+  long1
+  long2
+  long3
+  long4)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *long1*: todo
+
+- *long2*: todo
+
+- *long3*: todo
+
+- *long4*: todo
+
+gtk-drag-dest-set
+~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-drag-dest-set
+  widget0
+  long1
+  long2
+  long3
+  long4)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *long1*: todo
+
+- *long2*: todo
+
+- *long3*: todo
+
+- *long4*: todo
+
+gtk-drag-finish
+~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-drag-finish widget0 boolean1 boolean2 long3)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *boolean1*: todo
+
+- *boolean2*: todo
+
+- *long3*: todo
+
+gtk-get-current-event
+~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-get-current-event)
+---------------------------------------------------------
+
+gtk-get-current-event-time
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-get-current-event-time)
+---------------------------------------------------------
+
+gtk-get-event-widget
+~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-get-event-widget pointer0)
+---------------------------------------------------------
+
+*Parameters*::
+- *pointer0*: todo
+
+gtk-widget-get-size-request
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-widget-get-size-request
+  widget0
+  widget1
+  widget2)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *widget1*: todo
+
+- *widget2*: todo
+
+gtk-signal-emit-by-name
+~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-signal-emit-by-name widget0 string1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *string1*: todo
+
+gtk-invisible-new
+~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-invisible-new)
+---------------------------------------------------------
+
+gdk-pixbuf-new-from-file
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gdk-pixbuf-new-from-file string0 widget1)
+---------------------------------------------------------
+
+*Parameters*::
+- *string0*: todo
+
+- *widget1*: todo
+
+gdk-pixbuf-new-from-file-at-size
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gdk-pixbuf-new-from-file-at-size
+  string0
+  long1
+  long2
+  widget3)
+---------------------------------------------------------
+
+*Parameters*::
+- *string0*: todo
+
+- *long1*: todo
+
+- *long2*: todo
+
+- *widget3*: todo
+
+gdk-pixbuf-rotate-simple
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gdk-pixbuf-rotate-simple widget0 long1)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+- *long1*: todo
+
+g-signal-connect
+~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(g-signal-connect widget name proc data)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget*: todo
+
+- *name*: todo
+
+- *proc*: todo
+
+- *data*: todo
+
+g-signal-connect-after
+~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(g-signal-connect-after widget name proc data)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget*: todo
+
+- *name*: todo
+
+- *proc*: todo
+
+- *data*: todo
+
+g-object-ref
+~~~~~~~~~~~~
+
+---------------------------------------------------------
+(g-object-ref widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+g-object-unref
+~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(g-object-unref widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+g-locale-to-utf8
+~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(g-locale-to-utf8
+  string0
+  long1
+  widget2
+  widget3
+  widget4)
+---------------------------------------------------------
+
+*Parameters*::
+- *string0*: todo
+
+- *long1*: todo
+
+- *widget2*: todo
+
+- *widget3*: todo
+
+- *widget4*: todo
+
+g-locale-from-utf8
+~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(g-locale-from-utf8
+  string0
+  long1
+  widget2
+  widget3
+  widget4)
+---------------------------------------------------------
+
+*Parameters*::
+- *string0*: todo
+
+- *long1*: todo
+
+- *widget2*: todo
+
+- *widget3*: todo
+
+- *widget4*: todo
+
+g-free
+~~~~~~
+
+---------------------------------------------------------
+(g-free widget0)
+---------------------------------------------------------
+
+*Parameters*::
+- *widget0*: todo
+
+g-printf
+~~~~~~~~
+
+---------------------------------------------------------
+(g-printf string0 widget1)
+---------------------------------------------------------
+
+*Parameters*::
+- *string0*: todo
+
+- *widget1*: todo
+

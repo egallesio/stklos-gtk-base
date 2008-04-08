@@ -1,0 +1,14 @@
+
+			STKLOS-GTK-BASE
+
+
+This is a simple binding of GTK+ (version 2) functions for STklos. This
+binding extensively uses the STklos FFI and is completely written in
+Scheme. The binding is quite direct and programming interfaces with it
+is low level and very similar to programming a GTK+ GUI in C. An
+example of a simple GUI is given in the example directory.
+
+Enjoy 
+
+
+Erick Gallesio

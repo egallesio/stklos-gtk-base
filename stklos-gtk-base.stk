@@ -1,0 +1,1080 @@
+;;;;
+;;;; stklos-gtk-base.stk	-- STklos interface to GTK (base level)
+;;;; 
+;;;; Copyright © 2007 Erick Gallesio - I3S-CNRS/ESSI <eg@essi.fr>
+;;;; 
+;;;; 
+;;;; This program is free software; you can redistribute it and/or modify
+;;;; it under the terms of the GNU General Public License as published by
+;;;; the Free Software Foundation; either version 2 of the License, or
+;;;; (at your option) any later version.
+;;;; 
+;;;; This program is distributed in the hope that it will be useful,
+;;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;;;; GNU General Public License for more details.
+;;;; 
+;;;; You should have received a copy of the GNU General Public License
+;;;; along with this program; if not, write to the Free Software
+;;;; Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, 
+;;;; USA.
+;;;; 
+;;;;           Author: Erick Gallesio [eg@essi.fr]
+;;;;    Creation date: 26-Jun-2007 15:19 (eg)
+;;;; Last file update:  2-Sep-2007 22:01 (eg)
+;;;;
+
+(when-load-and-compile
+ (define (find-gtk-library name)
+   (case name
+     ((gtk)     "libgtk-x11-2.0.so")
+     ((gdk)     "libgdk-x11-2.0.so")
+     ((glib)    "libglib-2.0.so")
+     ((gobject) "libgobject-2.0.so")
+     ((pango)   "libpango-1.0.so")
+     ((pixbuf)  "libgdk_pixbuf_xlib-2.0.so")
+     (else      (error "bad GTK+ libarary name ~S" name)))))
+
+(when-compile 
+ (define-macro (define-gtk name args return-type entry-name lib)
+   ;;  (define (pretty lst)
+   ;;    (map (lambda (x y) (format "~a~a" (if (eq? x ':pointer) 'widget x) y))
+   ;;	 lst
+   ;;	 (iota (length lst))))
+   `(begin
+      ;;(eprintf "  ~A\n" (cons ',name ',(pretty args)))
+      (define-external ,name ,args
+	:return-type ,return-type
+	:entry-name ,(or entry-name (symbol->string name))
+	:library-name ,(find-gtk-library lib))))
+)
+
+
+;; ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+(require-library "ffi")
+
+(define *event-name* '(
+  "event"
+  "button_press_event"
+  "button_release_event"
+  "scroll_event"
+  "motion_notify_event"
+  "delete_event"
+  "destroy_event"
+  "expose_event"
+  "key_press_event"
+  "key_release_event"
+  "enter_notify_event"
+  "leave_notify_event"
+  "configure_event"
+  "focus_in_event"
+  "focus_out_event"
+  "map_event"
+  "unmap_event"
+  "property_notify_event"
+  "selection_clear_event"
+  "selection_request_event"
+  "selection_notify_event"
+  "proximity_in_event"
+  "proximity_out_event"
+  "visibility_notify_event"
+  "client_event"
+  "no_expose_event"
+  "window_state_event"))
+
+
+;; ----------------------------------------------------------------------
+;; 	Signal Management
+;; ----------------------------------------------------------------------
+(define-external %do-signal-connect ((widget :pointer) (name :string)
+				     (proc :pointer)  (data :obj)
+				     (unused1 :pointer) (unused2 :int))
+  :entry-name "g_signal_connect_data"
+  :library-name (find-gtk-library 'gobject))
+
+
+(define (%g-signal-connect widget name proc data after)
+  (let ((cb (make-callback proc
+			   (map (lambda (x) (ffi:arg-type->number x #t))
+				(if (member name *event-name*)
+				    '(:pointer :pointer)
+				    '(:pointer)))
+			   data)))
+    ;; This call correspond to the C call
+    ;;     g_signal_connect_swapped(widget, name, callback, cb);
+    ;; The value 2 below correspond to swapped callbacks where the user data
+    ;; is the first argument of the callback
+    (%do-signal-connect widget
+			name
+			(%exec-callback-address)
+			cb
+			(void)
+			(+ 2 (if after 1 0)))))
+
+
+(define (g-signal-connect widget name proc data)
+  (%g-signal-connect widget name proc data #f))
+
+(define (g-signal-connect-after widget name proc data)
+  (%g-signal-connect widget name proc data #t))
+
+;;;;
+;;;; GOBJECT
+;;;;
+(define-gtk g-object-set-data (:pointer :string :obj) :void
+  "g_object_set_data" gobject)
+(define-gtk g-object-get-data (:pointer :string) :obj
+  "g_object_get_data" gobject)
+
+
+;;;;
+;;;; GTK_WINDOW
+;;;;
+(define-gtk gtk-window-new (:long) :pointer
+   "gtk_window_new" gtk)
+(define-gtk gtk-window-set-title (:pointer :string) :void
+   "gtk_window_set_title" gtk)
+(define-gtk gtk-window-get-title (:pointer) :string
+   "gtk_window_get_title" gtk)
+(define-gtk gtk-window-set-default-size (:pointer :long :long) :void
+   "gtk_window_set_default_size" gtk)
+(define-gtk gtk-window-set-position (:pointer :long) :void
+   "gtk_window_set_position" gtk)
+(define-gtk gtk-window-get-position (:pointer) :long
+   "gtk_window_get_position" gtk)
+(define-gtk gtk-window-set-resizable (:pointer :boolean) :void
+   "gtk_window_set_resizable" gtk)
+(define-gtk gtk-window-get-resizable (:pointer) :boolean
+   "gtk_window_get_resizable" gtk)
+(define-gtk gtk-window-set-transient-for (:pointer :pointer) :void
+   "gtk_window_set_transient_for" gtk)
+(define-gtk gtk-window-maximize (:pointer) :void
+   "gtk_window_maximize" gtk)
+(define-gtk gtk-message-dialog-new (:pointer :long :long :long :string) :pointer
+   "gtk_message_dialog_new" gtk)
+(define-gtk gtk-window-set-icon-from-file (:pointer :string :pointer) :boolean
+   "gtk_window_set_icon_from_file" gtk)
+(define-gtk gtk-window-set-keep-above (:pointer :boolean) :void
+   "gtk_window_set_keep_above" gtk)
+(define-gtk gtk-window-set-keep-below (:pointer :boolean) :void
+   "gtk_window_set_keep_below" gtk)
+(define-gtk gtk-about-dialog-set-version (:pointer :string) :void
+   "gtk_about_dialog_set_version" gtk)
+(define-gtk gtk-window-set-policy (:pointer :long :long :long) :void
+   "gtk_window_set_policy" gtk)
+(define-gtk gtk-window-set-modal (:pointer :boolean) :void
+   "gtk_window_set_modal" gtk)
+(define-gtk gtk-window-get-modal (:pointer) :boolean
+   "gtk_window_get_modal" gtk)
+
+;;;;
+;;;; Containers
+;;;;
+(define-gtk gtk-table-new (:long :long :boolean) :pointer
+   "gtk_table_new" gtk)
+(define-gtk gtk-table-attach-defaults (:pointer :pointer :long :long :long :long)
+  :void
+  "gtk_table_attach_defaults" gtk)
+(define-gtk gtk-container-add (:pointer :pointer) :void
+   "gtk_container_add" gtk)
+(define-gtk gtk-container-remove (:pointer :pointer) :void
+   "gtk_container_remove" gtk)
+(define-gtk gtk-container-set-border-width (:pointer :long) :void
+   "gtk_container_set_border_width" gtk)
+(define-gtk gtk-hbox-new (:boolean :long) :pointer
+   "gtk_hbox_new" gtk)
+(define-gtk gtk-vbox-new (:boolean :long) :pointer
+   "gtk_vbox_new" gtk)
+(define-gtk gtk-box-pack-start (:pointer :pointer :boolean :boolean :long) :void
+   "gtk_box_pack_start" gtk)
+(define-gtk gtk-box-pack-end (:pointer :pointer :boolean :boolean :long) :void
+   "gtk_box_pack_end" gtk)
+(define-gtk gtk-box-pack-start-defaults (:pointer :pointer) :void
+   "gtk_box_pack_start_defaults" gtk)
+(define-gtk gtk-box-pack-end-defaults (:pointer :pointer) :void
+   "gtk_box_pack_end_defaults" gtk)
+
+
+
+;;;;
+;;;; GTK_BUTTON
+;;;;
+(define-gtk gtk-button-new () :pointer
+   "gtk_button_new" gtk)
+(define-gtk gtk-button-new-with-label (:string) :pointer
+   "gtk_button_new_with_label" gtk)
+(define-gtk gtk-button-new-from-stock (:string) :pointer
+   "gtk_button_new_from_stock" gtk)
+(define-gtk gtk-button-new-with-mnemonic (:string) :pointer
+   "gtk_button_new_with_mnemonic" gtk)
+(define-gtk gtk-button-set-use-stock (:pointer :boolean) :void
+   "gtk_button_set_use_stock" gtk)
+(define-gtk gtk-button-set-label (:pointer :string) :void
+   "gtk_button_set_label" gtk)
+(define-gtk gtk-button-get-label (:pointer) :string
+   "gtk_button_get_label" gtk)
+(define-gtk gtk-button-set-image (:pointer :pointer) :void
+   "gtk_button_set_image" gtk)
+(define-gtk gtk-button-get-image (:pointer) :pointer
+   "gtk_button_get_image" gtk)
+(define-gtk gtk-button-get-relief (:pointer) :long
+   "gtk_button_get_relief" gtk)
+(define-gtk gtk-button-set-relief (:pointer :long) :void
+   "gtk_button_set_relief" gtk)
+;;;;
+;;;; GTK_TOGGLE
+;;;;
+(define-gtk gtk-toggle-button-new () :pointer
+   "gtk_toggle_button_new" gtk)
+(define-gtk gtk-toggle-button-new-with-label (:string) :pointer
+   "gtk_toggle_button_new_with_label" gtk)
+(define-gtk gtk-toggle-button-get-active (:pointer) :boolean
+   "gtk_toggle_button_get_active" gtk)
+(define-gtk gtk-toggle-button-set-active (:pointer :boolean) :void
+   "gtk_toggle_button_set_active" gtk)
+;;;;
+;;;; GTK_CHECK_BUTTON
+;;;;
+(define-gtk gtk-check-button-new-with-label (:string) :pointer
+   "gtk_check_button_new_with_label" gtk)
+;;;;
+;;;; GTK_ENTRY
+;;;;
+(define-gtk gtk-entry-new () :pointer
+   "gtk_entry_new" gtk)
+(define-gtk gtk-entry-get-text (:pointer) :string
+   "gtk_entry_get_text" gtk)
+(define-gtk gtk-entry-set-text (:pointer :string) :void
+   "gtk_entry_set_text" gtk)
+(define-gtk gtk-entry-set-visibility (:pointer :boolean) :void
+   "gtk_entry_set_visibility" gtk)
+;;;;
+;;;; GTK_EDITABLE
+;;;;
+(define-gtk gtk-editable-delete-text (:pointer :long :long) :void
+   "gtk_editable_delete_text" gtk)
+(define-gtk gtk-editable-get-chars (:pointer :long :long) :string
+   "gtk_editable_get_chars" gtk)
+(define-gtk gtk-editable-set-editable (:pointer :boolean) :void
+   "gtk_editable_set_editable" gtk)
+(define-gtk gtk-editable-select-region (:pointer :long :long) :void
+   "gtk_editable_select_region" gtk)
+;;;;
+;;;; GTK_TEXT_VIEW related(GTK2.x)
+;;;;
+(define-gtk gtk-text-buffer-new (:pointer) :pointer
+   "gtk_text_buffer_new" gtk)
+(define-gtk gtk-text-buffer-set-text (:pointer :string :long) :void
+   "gtk_text_buffer_set_text" gtk)
+(define-gtk gtk-text-buffer-insert-at-cursor (:pointer :string :long) :void
+   "gtk_text_buffer_insert_at_cursor" gtk)
+(define-gtk gtk-text-buffer-get-insert (:pointer) :pointer
+   "gtk_text_buffer_get_insert" gtk)
+(define-gtk gtk-text-buffer-get-start-iter (:pointer :pointer) :void
+   "gtk_text_buffer_get_start_iter" gtk)
+(define-gtk gtk-text-buffer-get-end-iter (:pointer :pointer) :void
+   "gtk_text_buffer_get_end_iter" gtk)
+(define-gtk gtk-text-buffer-get-bounds (:pointer :pointer :pointer) :void
+   "gtk_text_buffer_get_bounds" gtk)
+(define-gtk gtk-text-buffer-get-selection-bounds (:pointer :pointer :pointer) :boolean
+   "gtk_text_buffer_get_selection_bounds" gtk)
+(define-gtk gtk-text-buffer-get-iter-at-offset (:pointer :pointer :long) :void
+   "gtk_text_buffer_get_iter_at_offset" gtk)
+(define-gtk gtk-text-buffer-get-text (:pointer :pointer :pointer :boolean) :string
+   "gtk_text_buffer_get_text" gtk)
+(define-gtk gtk-text-buffer-insert (:pointer :pointer :string :long) :void
+   "gtk_text_buffer_insert" gtk)
+(define-gtk gtk-text-buffer-create-tag (:pointer :string :string :long :pointer)
+  :pointer
+  "gtk_text_buffer_create_tag" gtk)
+(define-gtk gtk-text-buffer-insert-with-tags-by-name
+  (:pointer :pointer :string :long :string :string :string :pointer) :void
+  "gtk_text_buffer_insert_with_tags_by_name" gtk)
+(define-gtk gtk-text-buffer-apply-tag-by-name (:pointer :string :pointer :pointer)
+  :void
+  "gtk_text_buffer_apply_tag_by_name" gtk)
+(define-gtk gtk-text-buffer-remove-tag-by-name (:pointer :string :pointer :pointer)
+  :void
+  "gtk_text_buffer_remove_tag_by_name" gtk)
+(define-gtk gtk-text-buffer-remove-all-tags (:pointer :pointer :pointer) :void
+   "gtk_text_buffer_remove_all_tags" gtk)
+(define-gtk gtk-text-buffer-get-tag-table (:pointer) :pointer
+   "gtk_text_buffer_get_tag_table" gtk)
+(define-gtk gtk-text-buffer-select-range (:pointer :pointer :pointer) :void
+   "gtk_text_buffer_select_range" gtk)
+(define-gtk gtk-text-buffer-get-selection-bound (:pointer) :pointer
+   "gtk_text_buffer_get_selection_bound" gtk)
+(define-gtk gtk-text-buffer-get-line-count (:pointer) :long
+   "gtk_text_buffer_get_line_count" gtk)
+(define-gtk gtk-text-buffer-create-mark (:pointer :string :pointer :boolean) :pointer
+   "gtk_text_buffer_create_mark" gtk)
+(define-gtk gtk-text-buffer-get-iter-at-mark (:pointer :pointer :pointer) :void
+   "gtk_text_buffer_get_iter_at_mark" gtk)
+(define-gtk gtk-text-buffer-get-iter-at-line (:pointer :pointer :long) :void
+   "gtk_text_buffer_get_iter_at_line" gtk)
+(define-gtk gtk-text-buffer-delete (:pointer :pointer :pointer) :void
+   "gtk_text_buffer_delete" gtk)
+(define-gtk gtk-text-buffer-delete-mark (:pointer :pointer) :void
+   "gtk_text_buffer_delete_mark" gtk)
+(define-gtk gtk-text-buffer-delete-mark-by-name (:pointer :string) :void
+   "gtk_text_buffer_delete_mark_by_name" gtk)
+(define-gtk gtk-text-buffer-place-cursor (:pointer :pointer) :void
+   "gtk_text_buffer_place_cursor" gtk)
+(define-gtk gtk-text-buffer-copy-clipboard (:pointer :pointer) :void
+   "gtk_text_buffer_copy_clipboard" gtk)
+(define-gtk gtk-text-buffer-cut-clipboard (:pointer :pointer :boolean) :void
+   "gtk_text_buffer_cut_clipboard" gtk)
+(define-gtk gtk-text-buffer-paste-clipboard (:pointer :pointer :pointer :boolean) :void
+   "gtk_text_buffer_paste_clipboard" gtk)
+(define-gtk gtk-scrolled-window-new (:pointer :pointer) :pointer
+   "gtk_scrolled_window_new" gtk)
+(define-gtk gtk-scrolled-window-set-policy (:pointer :long :long) :void
+   "gtk_scrolled_window_set_policy" gtk)
+(define-gtk gtk-scrolled-window-set-shadow-type (:pointer :long) :void
+   "gtk_scrolled_window_set_shadow_type" gtk)
+(define-gtk gtk-scrolled-window-add-with-viewport (:pointer :pointer) :void
+   "gtk_scrolled_window_add_with_viewport" gtk)
+(define-gtk gtk-scrolled-window-get-hadjustment (:pointer) :pointer
+   "gtk_scrolled_window_get_hadjustment" gtk)
+(define-gtk gtk-scrolled-window-get-vadjustment (:pointer) :pointer
+   "gtk_scrolled_window_get_vadjustment" gtk)
+(define-gtk gtk-text-view-new-with-buffer (:pointer) :pointer
+   "gtk_text_view_new_with_buffer" gtk)
+(define-gtk gtk-text-view-set-wrap-mode (:pointer :long) :void
+   "gtk_text_view_set_wrap_mode" gtk)
+(define-gtk gtk-text-view-set-editable (:pointer :boolean) :void
+   "gtk_text_view_set_editable" gtk)
+(define-gtk gtk-text-view-set-border-window-size (:pointer :long :long) :void
+   "gtk_text_view_set_border_window_size" gtk)
+(define-gtk gtk-text-view-move-mark-onscreen (:pointer :pointer) :boolean
+   "gtk_text_view_move_mark_onscreen" gtk)
+(define-gtk gtk-text-view-scroll-to-mark (:pointer :pointer :double :boolean :double :double) :void
+   "gtk_text_view_scroll_to_mark" gtk)
+(define-gtk gtk-text-view-scroll-mark-onscreen (:pointer :pointer) :void
+   "gtk_text_view_scroll_mark_onscreen" gtk)
+(define-gtk gtk-text-view-set-pixels-inside-wrap (:pointer :long) :void
+   "gtk_text_view_set_pixels_inside_wrap" gtk)
+(define-gtk gtk-text-view-get-pixels-inside-wrap (:pointer) :long
+   "gtk_text_view_get_pixels_inside_wrap" gtk)
+(define-gtk gtk-text-view-set-pixels-above-lines (:pointer :long) :void
+   "gtk_text_view_set_pixels_above_lines" gtk)
+(define-gtk gtk-text-view-get-pixels-above-lines (:pointer) :long
+   "gtk_text_view_get_pixels_above_lines" gtk)
+(define-gtk gtk-text-view-set-cursor-visible (:pointer :boolean) :void
+   "gtk_text_view_set_cursor_visible" gtk)
+(define-gtk gtk-text-view-window-to-buffer-coords (:pointer :long :long :long :pointer :pointer) :void
+   "gtk_text_view_window_to_buffer_coords" gtk)
+(define-gtk gtk-text-iter-forward-search (:pointer :string :long :pointer :pointer :pointer) :boolean
+   "gtk_text_iter_forward_search" gtk)
+(define-gtk gtk-text-iter-forward-visible-cursor-position (:pointer) :boolean
+   "gtk_text_iter_forward_visible_cursor_position" gtk)
+(define-gtk gtk-text-iter-forward-to-line-end (:pointer) :boolean
+   "gtk_text_iter_forward_to_line_end" gtk)
+(define-gtk gtk-text-iter-set-line (:pointer :long) :void
+   "gtk_text_iter_set_line" gtk)
+(define-gtk gtk-text-iter-set-line-offset (:pointer :long) :void
+   "gtk_text_iter_set_line_offset" gtk)
+(define-gtk gtk-text-iter-set-line-index (:pointer :long) :void
+   "gtk_text_iter_set_line_index" gtk)
+(define-gtk gtk-text-iter-get-text (:pointer :pointer) :string
+   "gtk_text_iter_get_text" gtk)
+(define-gtk gtk-text-iter-get-line (:pointer) :long
+   "gtk_text_iter_get_line" gtk)
+(define-gtk gtk-text-view-new () :pointer
+   "gtk_text_view_new" gtk)
+(define-gtk gtk-text-view-get-buffer (:pointer) :pointer
+   "gtk_text_view_get_buffer" gtk)
+(define-gtk gtk-text-view-set-buffer (:pointer :pointer) :void
+   "gtk_text_view_set_buffer" gtk)
+(define-gtk gtk-text-tag-table-remove (:pointer :pointer) :void
+   "gtk_text_tag_table_remove" gtk)
+;;;;
+;;;; GTK_TEXT
+;;;;
+(define-gtk gtk-text-new (:pointer :pointer) :pointer
+   "gtk_text_new" gtk)
+(define-gtk gtk-text-set-editable (:pointer :long) :void
+   "gtk_text_set_editable" gtk)
+(define-gtk gtk-text-insert (:pointer :pointer :pointer :pointer :string :long) :void
+   "gtk_text_insert" gtk)
+(define-gtk gtk-text-set-adjustments (:pointer :pointer :pointer) :void
+   "gtk_text_set_adjustments" gtk)
+(define-gtk gtk-text-get-length (:pointer) :long
+   "gtk_text_get_length" gtk)
+(define-gtk gtk-text-set-word-wrap (:pointer :long) :void
+   "gtk_text_set_word_wrap" gtk)
+(define-gtk gtk-text-backward-delete (:pointer :long) :boolean
+   "gtk_text_backward_delete" gtk)
+(define-gtk gtk-text-forward-delete (:pointer :long) :boolean
+   "gtk_text_forward_delete" gtk)
+(define-gtk gtk-text-set-point (:pointer :long) :void
+   "gtk_text_set_point" gtk)
+;;;;
+;;;; GTK-TOOLBAR
+;;;;
+(define-gtk gtk-toolbar-new () :pointer
+  "gtk_toolbar_new" gtk)
+(define-gtk gtk-toolbar-insert (:pointer :pointer :long) :void
+  "gtk_toolbar_insert" gtk)
+(define-gtk gtk-toolbar-get-orientation (:pointer) :long
+  "gtk_toolbar_get_orientation" gtk)
+(define-gtk gtk-toolbar-set-orientation (:pointer :long) :void
+  "gtk_toolbar_set_orientation" gtk)
+(define-gtk gtk-toolbar-get-style (:pointer) :long
+  "gtk_toolbar_get_style" gtk)
+(define-gtk gtk-toolbar-set-style (:pointer :long) :void
+  "gtk_toolbar_set_style" gtk)
+(define-gtk gtk-tool-button-new (:pointer :string) :pointer
+  "gtk_tool_button_new" gtk)
+(define-gtk gtk-tool-button-get-icon-widget (:pointer) :pointer
+  "gtk_tool_button_get_icon_widget" gtk)
+(define-gtk gtk-tool-button-set-icon-widget (:pointer :pointer) :void
+  "gtk_tool_button_set_icon_widget" gtk)
+(define-gtk gtk-separator-tool-item-new () :pointer
+  "gtk_separator_tool_item_new" gtk)
+;;;;
+;;;; GDK functions and drawing stuff
+;;;;
+(define-gtk gdk-font-load (:string) :pointer
+   "gdk_font_load" gtk)
+(define-gtk gdk-pixmap-new (:pointer :long :long :long) :pointer
+   "gdk_pixmap_new" gdk)
+;(define-gtk gdk-pixmap-unref (:pointer) :void
+;   "gdk_pixmap_unref" #f pixbuf)
+(define-gtk gdk-pixmap-create-from-xpm (:pointer :pointer :pointer :string) :pointer
+   "gdk_pixmap_create_from_xpm" gdk)
+(define-gtk gdk-pixmap-colormap-create-from-xpm (:pointer :pointer :pointer :pointer :string) :pointer
+   "gdk_pixmap_colormap_create_from_xpm" gdk)
+(define-gtk gdk-draw-rectangle (:pointer :pointer :boolean :long :long :long :long) :void
+   "gdk_draw_rectangle" gdk)
+(define-gtk gdk-draw-arc (:pointer :pointer :boolean :long :long :long :long :long :long) :void
+   "gdk_draw_arc" gdk)
+(define-gtk gdk-draw-line (:pointer :pointer :long :long :long :long) :void
+   "gdk_draw_line" gdk)
+(define-gtk gdk-draw-point (:pointer :pointer :long :long) :void
+   "gdk_draw_point" gdk)
+(define-gtk gdk-draw-layout (:pointer :pointer :long :long :pointer) :void
+   "gdk_draw_layout" gdk)
+(define-gtk gdk-draw-drawable (:pointer :pointer :pointer :long :long :long :long :long :long) :void
+   "gdk_draw_drawable" gdk)
+(define-gtk gdk-gc-new (:pointer) :pointer
+   "gdk_gc_new" gdk)
+(define-gtk gdk-gc-set-rgb-fg-color (:pointer :pointer) :void
+   "gdk_gc_set_rgb_fg_color" gdk)
+(define-gtk gdk-gc-set-rgb-bg-color (:pointer :pointer) :void
+   "gdk_gc_set_rgb_bg_color" gdk)
+(define-gtk gdk-gc-set-foreground (:pointer :pointer) :void
+   "gdk_gc_set_foreground" gdk)
+(define-gtk gdk-gc-set-background (:pointer :pointer) :void
+   "gdk_gc_set_background" gdk)
+(define-gtk gdk-gc-set-colormap (:pointer :pointer) :void
+   "gdk_gc_set_colormap" gdk)
+(define-gtk gdk-color-alloc (:pointer :pointer) :long
+   "gdk_color_alloc" gdk)
+(define-gtk gdk-color-parse (:string :pointer) :long
+   "gdk_color_parse" gdk)
+(define-gtk gdk-colormap-get-system () :pointer
+   "gdk_colormap_get_system" gdk)
+(define-gtk gdk-colormap-alloc-color (:pointer :pointer :boolean :boolean) :boolean
+   "gdk_colormap_alloc_color" gdk)
+(define-gtk gdk-get-default-root-window () :pointer
+   "gdk_get_default_root_window" gdk)
+(define-gtk gdk-rgb-find-color (:pointer :pointer) :void
+   "gdk_rgb_find_color" gdk)
+(define-gtk gdk-drawable-set-colormap (:pointer :pointer) :void
+   "gdk_drawable_set_colormap" gdk)
+(define-gtk gdk-drawable-get-size (:pointer :pointer :pointer) :void
+   "gdk_drawable_get_size" gdk)
+(define-gtk gdk-keymap-translate-keyboard-state (:pointer :long :long :long :pointer :pointer :pointer :pointer) :boolean
+   "gdk_keymap_translate_keyboard_state" gdk)
+(define-gtk gdk-window-process-all-updates () :void
+   "gdk_window_process_all_updates" gdk)
+(define-gtk gdk-window-get-geometry (:pointer :pointer :pointer :pointer :string :pointer) :void
+   "gdk_window_get_geometry" gdk)
+(define-gtk gdk-screen-get-default () :pointer
+   "gdk_screen_get_default" gdk)
+(define-gtk gdk-screen-get-width (:pointer) :long
+   "gdk_screen_get_width" gdk)
+(define-gtk gdk-screen-get-height (:pointer) :long
+   "gdk_screen_get_height" gdk)
+(define-gtk gdk-screen-width () :long
+   "gdk_screen_width" gdk)
+(define-gtk gdk-screen-height () :long
+   "gdk_screen_height" gdk)
+(define-gtk gdk-flush () :void
+   "gdk_flush" gdk)
+(define-gtk gdk-init (:pointer :pointer) :void
+   "gdk_init" gdk)
+(define-gtk gdk-display-get-default () :pointer
+   "gdk_display_get_default" gdk)
+(define-gtk gdk-display-get-pointer (:pointer :pointer :pointer :pointer :pointer) :void
+   "gdk_display_get_pointer" gdk)
+;;;;
+;;;; GTK functions for drawings
+;;;;
+(define-gtk gtk-image-new () :pointer
+   "gtk_image_new" gtk)
+(define-gtk gtk-image-new-from-pixmap (:pointer :pointer) :pointer
+   "gtk_image_new_from_pixmap" gtk)
+(define-gtk gtk-image-set-from-pixbuf (:pointer :pointer) :pointer
+   "gtk_image_set_from_pixbuf" gtk)
+(define-gtk gtk-image-set-from-pixmap (:pointer :pointer :pointer) :void
+   "gtk_image_set_from_pixmap" gtk)
+(define-gtk gtk-image-set (:pointer :pointer :pointer) :void
+   "gtk_image_set" gtk)
+(define-gtk gtk-image-set-from-file (:pointer :string) :void
+   "gtk_image_set_from_file" gtk)
+(define-gtk gtk-image-new-from-file (:string) :pointer
+   "gtk_image_new_from_file" gtk)
+(define-gtk gtk-image-new-from-stock (:string :long) :pointer
+   "gtk_image_new_from_stock" gtk)
+(define-gtk gtk-pixmap-new (:pointer :pointer) :pointer
+   "gtk_pixmap_new" gtk)
+(define-gtk gtk-drawing-area-new () :pointer
+   "gtk_drawing_area_new" gtk)
+(define-gtk gtk-widget-queue-draw (:pointer) :void
+   "gtk_widget_queue_draw" gtk)
+(define-gtk gtk-widget-get-colormap (:pointer) :pointer
+   "gtk_widget_get_colormap" gtk)
+(define-gtk gtk-widget-get-parent-window (:pointer) :pointer
+   "gtk_widget_get_parent_window" gtk)
+(define-gtk gtk-widget-create-pango-layout (:pointer :string) :pointer
+   "gtk_widget_create_pango_layout" gtk)
+
+
+;;;;
+;;;; GTK_SCROLLBARS
+;;;;
+(define-gtk gtk-vscrollbar-new (:pointer) :pointer
+   "gtk_vscrollbar_new" gtk)
+;;;;
+;;;; GTK_LABEL
+;;;;
+(define-gtk gtk-label-new (:string) :pointer
+   "gtk_label_new" gtk)
+(define-gtk gtk-label-set-text (:pointer :string) :void
+   "gtk_label_set_text" gtk)
+(define-gtk gtk-label-get-text (:pointer) :string
+   "gtk_label_get_text" gtk)
+(define-gtk gtk-label-set-line-wrap (:pointer :boolean) :void
+   "gtk_label_set_line_wrap" gtk)
+(define-gtk gtk-label-set-selectable (:pointer :boolean) :void
+   "gtk_label_set_selectable" gtk)
+(define-gtk gtk-label-set-use-markup (:pointer :boolean) :void
+   "gtk_label_set_use_markup" gtk)
+(define-gtk gtk-label-set-justify (:pointer :long) :void
+   "gtk_label_set_justify" gtk)
+(define-gtk gtk-label-get-width-chars (:pointer) :long
+   "gtk_label_get_width_chars" gtk)
+(define-gtk gtk-label-get-max-width-chars (:pointer) :long
+   "gtk_label_get_max_width_chars" gtk)
+(define-gtk gtk-label-set-markup-with-mnemonic (:pointer :string) :void
+   "gtk_label_set_markup_with_mnemonic" gtk)
+;;;;
+;;;; GTK_FRAME
+;;;;
+(define-gtk gtk-frame-new (:string) :pointer
+   "gtk_frame_new" gtk)
+(define-gtk gtk-frame-set-label-align (:pointer :long :long) :void
+   "gtk_frame_set_label_align" gtk)
+(define-gtk gtk-frame-set-label (:pointer :string) :void
+   "gtk_frame_set_label" gtk)
+(define-gtk gtk-frame-get-label (:pointer) :string
+   "gtk_frame_get_label" gtk)
+(define-gtk gtk-frame-get-shadow-type (:pointer) :long
+  "gtk_frame_get_shadow_type" gtk)
+(define-gtk gtk-frame-set-shadow-type (:pointer :long) :void
+  "gtk_frame_set_shadow_type" gtk)
+(define-gtk gtk-aspect-frame-new (:string :long :long :long :boolean) :pointer
+   "gtk_aspect_frame_new" gtk)
+(define-gtk gtk-aspect-frame-set (:pointer :long :long :long :boolean) :void
+   "gtk_aspect_frame_set" gtk)
+
+;;;;
+;;;; GTK_RADIO_BUTTON
+;;;;
+(define-gtk gtk-radio-button-new (:pointer) :pointer
+   "gtk_radio_button_new" gtk)
+(define-gtk gtk-radio-button-new-with-label (:pointer :string) :pointer
+   "gtk_radio_button_new_with_label" gtk)
+(define-gtk gtk-radio-button-new-from-widget (:pointer) :pointer
+   "gtk_radio_button_new_from_widget" gtk)
+(define-gtk gtk-radio-button-new-with-label-from-widget (:pointer :string) :pointer
+   "gtk_radio_button_new_with_label_from_widget" gtk)
+;;;;
+;;;; GTK_NOTEBOOK
+;;;;
+(define-gtk gtk-notebook-new () :pointer
+   "gtk_notebook_new" gtk)
+(define-gtk gtk-notebook-set-tab-pos (:pointer :long) :void
+   "gtk_notebook_set_tab_pos" gtk)
+(define-gtk gtk-notebook-popup-enable (:pointer) :void
+   "gtk_notebook_popup_enable" gtk)
+(define-gtk gtk-notebook-insert-page (:pointer :pointer :pointer :long) :void
+   "gtk_notebook_insert_page" gtk)
+(define-gtk gtk-notebook-remove-page (:pointer :long) :void
+   "gtk_notebook_remove_page" gtk)
+(define-gtk gtk-notebook-get-current-page (:pointer) :void
+   "gtk_notebook_get_current_page" gtk)
+(define-gtk gtk-notebook-set-current-page (:pointer :long) :void
+   "gtk_notebook_set_current_page" gtk)
+(define-gtk gtk-notebook-set-tab-label-text (:pointer :pointer :string) :void
+   "gtk_notebook_set_tab_label_text" gtk)
+;;;;
+;;;; GTK_ADJUSTMENT
+;;;;
+(define-gtk gtk-adjustment-new (:double :double :double :double :double :double) :pointer
+   "gtk_adjustment_new" gtk)
+(define-gtk gtk-adjustment-get-value (:pointer) :long
+   "gtk_adjustment_get_value" gtk)
+(define-gtk gtk-adjustment-set-value (:pointer :double) :void
+   "gtk_adjustment_set_value" gtk)
+;;;;
+;;;; GTK_RANGE
+;;;;
+(define-gtk gtk-range-get-adjustment (:pointer) :pointer
+   "gtk_range_get_adjustment" gtk)
+(define-gtk gtk-range-get-value (:pointer) :long
+   "gtk_range_get_value" gtk)
+(define-gtk gtk-range-set-value (:pointer :double) :void
+   "gtk_range_set_value" gtk)
+;;;;
+;;;; GTK_SCALE
+;;;;
+(define-gtk gtk-scale-set-draw-value (:pointer :boolean) :void
+   "gtk_scale_set_draw_value" gtk)
+(define-gtk gtk-scale-set-value-pos (:pointer :long) :void
+   "gtk_scale_set_value_pos" gtk)
+;;;;
+;;;; GTK_HSCALE
+;;;;
+(define-gtk gtk-hscale-new (:pointer) :pointer
+   "gtk_hscale_new" gtk)
+(define-gtk gtk-hscale-new-with-range (:double :double :double) :pointer
+   "gtk_hscale_new_with_range" gtk)
+;;;;
+;;;; GTK_VSCALE
+;;;;
+(define-gtk gtk-vscale-new-with-range (:double :double :double) :pointer
+   "gtk_vscale_new_with_range" gtk)
+;;;;
+;;;; GTK_SPIN
+;;;;
+(define-gtk gtk-spin-button-new (:pointer :double :long) :pointer
+   "gtk_spin_button_new" gtk)
+(define-gtk gtk-spin-button-new-with-range (:double :double :double) :pointer
+   "gtk_spin_button_new_with_range" gtk)
+(define-gtk gtk-spin-button-get-value-as-int (:pointer) :long
+   "gtk_spin_button_get_value_as_int" gtk)
+(define-gtk gtk-spin-button-get-value (:pointer) :long
+   "gtk_spin_button_get_value" gtk)
+(define-gtk gtk-spin-button-set-wrap (:pointer :boolean) :void
+   "gtk_spin_button_set_wrap" gtk)
+(define-gtk gtk-spin-button-set-value (:pointer :double) :void
+   "gtk_spin_button_set_value" gtk)
+;;;;
+;;;; GTK_ARROW
+;;;;
+(define-gtk gtk-arrow-new (:long :long) :pointer
+   "gtk_arrow_new" gtk)
+;;;;
+;;;; File selector
+;;;;
+(define-gtk gtk-file-chooser-dialog-new (:string :pointer :long :string :long :string :long :pointer) :pointer
+   "gtk_file_chooser_dialog_new" gtk)
+(define-gtk gtk-file-chooser-widget-new (:long) :pointer
+   "gtk_file_chooser_widget_new" gtk)
+(define-gtk gtk-dialog-run (:pointer) :long
+   "gtk_dialog_run" gtk)
+(define-gtk gtk-file-chooser-get-filename (:pointer) :string
+   "gtk_file_chooser_get_filename" gtk)
+(define-gtk gtk-file-chooser-set-filename (:pointer :string) :boolean
+   "gtk_file_chooser_set_filename" gtk)
+(define-gtk gtk-file-filter-new () :pointer
+   "gtk_file_filter_new" gtk)
+(define-gtk gtk-file-filter-add-pattern (:pointer :string) :void
+   "gtk_file_filter_add_pattern" gtk)
+(define-gtk gtk-file-filter-set-name (:pointer :string) :void
+   "gtk_file_filter_set_name" gtk)
+(define-gtk gtk-file-chooser-add-filter (:pointer :pointer) :void
+   "gtk_file_chooser_add_filter" gtk)
+;;;;
+;;;; FONT selector
+;;;;
+(define-gtk gtk-font-selection-dialog-new (:string) :pointer
+   "gtk_font_selection_dialog_new" gtk)
+(define-gtk gtk-font-selection-dialog-get-font-name (:pointer) :string
+   "gtk_font_selection_dialog_get_font_name" gtk)
+(define-gtk gtk-font-selection-new () :pointer
+   "gtk_font_selection_new" gtk)
+(define-gtk gtk-font-selection-get-font-name (:pointer) :string
+   "gtk_font_selection_get_font_name" gtk)
+(define-gtk gtk-font-selection-set-font-name (:pointer :string) :boolean
+   "gtk_font_selection_set_font_name" gtk)
+;;;;
+;;;; Color selections
+;;;;
+(define-gtk gtk-color-selection-new () :pointer
+   "gtk_color_selection_new" gtk)
+(define-gtk gtk-color-selection-set-has-opacity-control (:pointer :boolean) :void
+   "gtk_color_selection_set_has_opacity_control" gtk)
+(define-gtk gtk-color-selection-set-current-color (:pointer :string) :void
+   "gtk_color_selection_set_current_color" gtk)
+(define-gtk gtk-color-selection-get-current-color (:pointer :pointer) :void
+   "gtk_color_selection_get_current_color" gtk)
+(define-gtk gtk-color-selection-set-color (:pointer :string) :void
+   "gtk_color_selection_set_color" gtk)
+;;;;
+;;;; Menubar
+;;;;
+(define-gtk gtk-menu-bar-new () :pointer
+   "gtk_menu_bar_new" gtk)
+(define-gtk gtk-menu-shell-append (:pointer :pointer) :void
+   "gtk_menu_shell_append" gtk)
+(define-gtk gtk-menu-item-new () :pointer
+   "gtk_menu_item_new" gtk)
+(define-gtk gtk-menu-item-new-with-label (:string) :pointer
+   "gtk_menu_item_new_with_label" gtk)
+(define-gtk gtk-menu-item-new-with-mnemonic (:string) :pointer
+   "gtk_menu_item_new_with_mnemonic" gtk)
+(define-gtk gtk-menu-new () :pointer
+   "gtk_menu_new" gtk)
+(define-gtk gtk-menu-item-set-right-justified (:pointer :boolean) :void
+   "gtk_menu_item_set_right_justified" gtk)
+(define-gtk gtk-menu-item-set-submenu (:pointer :pointer) :void
+   "gtk_menu_item_set_submenu" gtk)
+(define-gtk gtk-check-menu-item-new-with-label (:string) :pointer
+   "gtk_check_menu_item_new_with_label" gtk)
+(define-gtk gtk-check-menu-item-new-with-mnemonic (:string) :pointer
+   "gtk_check_menu_item_new_with_mnemonic" gtk)
+(define-gtk gtk-check-menu-item-get-active (:pointer) :boolean
+   "gtk_check_menu_item_get_active" gtk)
+(define-gtk gtk-check-menu-item-set-active (:pointer :boolean) :void
+   "gtk_check_menu_item_set_active" gtk)
+(define-gtk gtk-menu-popup (:pointer :pointer :pointer :pointer :pointer :long :long)
+  :void
+  "gtk_menu_popup" gtk)
+;;;;
+;;;; GTK_PROGRESS_BAR
+;;;;
+(define-gtk gtk-progress-bar-new () :pointer
+   "gtk_progress_bar_new" gtk)
+(define-gtk gtk-progress-bar-set-text (:pointer :string) :void
+   "gtk_progress_bar_set_text" gtk)
+(define-gtk gtk-progress-bar-set-fraction (:pointer :double) :void
+   "gtk_progress_bar_set_fraction" gtk)
+(define-gtk gtk-progress-bar-pulse (:pointer) :void
+   "gtk_progress_bar_pulse" gtk)
+(define-gtk gtk-progress-bar-set-pulse-step (:pointer :double) :void
+   "gtk_progress_bar_set_pulse_step" gtk)
+(define-gtk gtk-progress-configure (:pointer :double :double :double) :void
+   "gtk_progress_configure" gtk)
+(define-gtk gtk-progress-set-value (:pointer :double) :void
+   "gtk_progress_set_value" gtk)
+;;;;
+;;;; GTK_STATUS_BAR
+;;;;
+(define-gtk gtk-statusbar-new () :pointer
+   "gtk_statusbar_new" gtk)
+(define-gtk gtk-statusbar-get-context-id (:pointer :string) :long
+   "gtk_statusbar_get_context_id" gtk)
+(define-gtk gtk-statusbar-push (:pointer :long :string) :long
+   "gtk_statusbar_push" gtk)
+(define-gtk gtk-statusbar-pop (:pointer :long) :void
+   "gtk_statusbar_pop" gtk)
+(define-gtk gtk-statusbar-remove (:pointer :long :long) :void
+   "gtk_statusbar_remove" gtk)
+(define-gtk gtk-statusbar-set-has-resize-grip (:pointer :boolean) :void
+   "gtk_statusbar_set_has_resize_grip" gtk)
+;;;;
+;;;; EVENT_BOX
+;;;;
+(define-gtk gtk-event-box-new () :pointer
+   "gtk_event_box_new" gtk)
+;;;;
+;;;; COMBO BOX - only with GTK 2.4.x or higher
+;;;;
+(define-gtk gtk-combo-box-new-text () :pointer
+   "gtk_combo_box_new_text" gtk)
+(define-gtk gtk-combo-box-append-text (:pointer :string) :void
+   "gtk_combo_box_append_text" gtk)
+(define-gtk gtk-combo-box-insert-text (:pointer :long :string) :void
+   "gtk_combo_box_insert_text" gtk)
+(define-gtk gtk-combo-box-prepend-text (:pointer :string) :void
+   "gtk_combo_box_prepend_text" gtk)
+(define-gtk gtk-combo-box-remove-text (:pointer :long) :void
+   "gtk_combo_box_remove_text" gtk)
+(define-gtk gtk-combo-box-get-active (:pointer) :long
+   "gtk_combo_box_get_active" gtk)
+(define-gtk gtk-combo-box-set-active (:pointer :long) :void
+   "gtk_combo_box_set_active" gtk)
+(define-gtk gtk-combo-box-get-active-text (:pointer) :string
+   "gtk_combo_box_get_active_text" gtk)
+;;;;
+;;;; SEPARATORS
+;;;;
+(define-gtk gtk-vseparator-new () :pointer
+   "gtk_vseparator_new" gtk)
+(define-gtk gtk-hseparator-new () :pointer
+   "gtk_hseparator_new" gtk)
+;;;;
+;;;; Clipboards
+;;;;
+(define-gtk gtk-editable-copy-clipboard (:pointer) :void
+   "gtk_editable_copy_clipboard" gtk)
+(define-gtk gtk-editable-cut-clipboard (:pointer) :void
+   "gtk_editable_cut_clipboard" gtk)
+(define-gtk gtk-editable-paste-clipboard (:pointer) :void
+   "gtk_editable_paste_clipboard" gtk)
+(define-gtk gdk-atom-intern (:string :long) :pointer
+   "gdk_atom_intern" gtk)
+(define-gtk gtk-clipboard-get (:long) :pointer
+   "gtk_clipboard_get" gtk)
+(define-gtk gtk-clipboard-set-text (:pointer :string :long) :void
+   "gtk_clipboard_set_text" gtk)
+(define-gtk gtk-clipboard-wait-for-text (:pointer) :string
+   "gtk_clipboard_wait_for_text" gtk)
+;;;;
+;;;; CLists (GTK 1.x, obsolete in GTK2)
+;;;;
+(define-gtk gtk-clist-new (:long) :pointer
+   "gtk_clist_new" gtk)
+(define-gtk gtk-clist-set-column-title (:pointer :long :string) :void
+   "gtk_clist_set_column_title" gtk)
+(define-gtk gtk-clist-column-titles-show (:pointer) :void
+   "gtk_clist_column_titles_show" gtk)
+(define-gtk gtk-clist-append (:pointer :pointer) :long
+   "gtk_clist_append" gtk)
+(define-gtk gtk-clist-set-text (:pointer :long :long :string) :void
+   "gtk_clist_set_text" gtk)
+;;;;
+;;;; GTK fixed
+;;;;
+(define-gtk gtk-fixed-new () :pointer
+   "gtk_fixed_new" gtk)
+(define-gtk gtk-fixed-put (:pointer :pointer :long :long) :void
+   "gtk_fixed_put" gtk)
+(define-gtk gtk-fixed-move (:pointer :pointer :long :long) :void
+   "gtk_fixed_move" gtk)
+;;;;
+;;;; Lists (GTK2.x) defined for 1 column with strings
+;;;; Redefine with 'gtk_server_redefine' if necessary
+;;;;
+(define-gtk gtk-list-store-new (:long :long) :pointer
+   "gtk_list_store_new" gtk)
+(define-gtk gtk-list-store-append (:pointer :pointer) :void
+   "gtk_list_store_append" gtk)
+(define-gtk gtk-list-store-set (:pointer :pointer :long :string :long) :void
+   "gtk_list_store_set" gtk)
+(define-gtk gtk-list-store-set-value (:pointer :pointer :long :string) :void
+   "gtk_list_store_set_value" gtk)
+(define-gtk gtk-list-store-clear (:pointer) :void
+   "gtk_list_store_clear" gtk)
+(define-gtk gtk-list-store-remove (:pointer :pointer) :boolean
+   "gtk_list_store_remove" gtk)
+(define-gtk gtk-list-store-move-before (:pointer :pointer :pointer) :void
+  "gtk_list_store_move_before" gtk)
+(define-gtk gtk-list-store-move-after (:pointer :pointer :pointer) :void
+  "gtk_list_store_move_after" gtk)
+(define-gtk gtk-list-store-insert (:pointer :pointer :pointer) :void
+  "gtk_list_store_insert" gtk)
+(define-gtk gtk-list-store-insert-with-values
+  (:pointer :pointer :long :long :string :long) :void
+  "gtk_list_store_insert_with_values" gtk)
+(define-gtk gtk-cell-renderer-text-new () :pointer
+   "gtk_cell_renderer_text_new" gtk)
+(define-gtk gtk-tree-view-new-with-model (:pointer) :pointer
+   "gtk_tree_view_new_with_model" gtk)
+(define-gtk gtk-tree-view-column-new () :pointer
+   "gtk_tree_view_column_new" gtk)
+(define-gtk gtk-tree-view-column-new-with-attributes (:string :pointer :string :long :pointer) :pointer
+   "gtk_tree_view_column_new_with_attributes" gtk)
+(define-gtk gtk-tree-view-column-pack-start (:pointer :pointer :boolean) :void
+   "gtk_tree_view_column_pack_start" gtk)
+(define-gtk gtk-tree-view-append-column (:pointer :pointer) :void
+   "gtk_tree_view_append_column" gtk)
+(define-gtk gtk-tree-view-set-headers-visible (:pointer :boolean) :void
+   "gtk_tree_view_set_headers_visible" gtk)
+(define-gtk gtk-tree-view-set-headers-clickable (:pointer :boolean) :void
+   "gtk_tree_view_set_headers_clickable" gtk)
+(define-gtk gtk-tree-view-get-selection (:pointer) :pointer
+   "gtk_tree_view_get_selection" gtk)
+(define-gtk gtk-tree-view-get-hadjustment (:pointer) :pointer
+   "gtk_tree_view_get_hadjustment" gtk)
+(define-gtk gtk-tree-view-get-vadjustment (:pointer) :pointer
+   "gtk_tree_view_get_vadjustment" gtk)
+(define-gtk gtk-tree-view-column-set-resizable (:pointer :boolean) :void
+   "gtk_tree_view_column_set_resizable" gtk)
+(define-gtk gtk-tree-view-column-set-clickable (:pointer :boolean) :void
+   "gtk_tree_view_column_set_clickable" gtk)
+(define-gtk gtk-tree-view-scroll-to-cell (:pointer :pointer :pointer :boolean :long :long) :void
+   "gtk_tree_view_scroll_to_cell" gtk)
+(define-gtk gtk-tree-selection-get-selected (:pointer :pointer :pointer) :boolean
+   "gtk_tree_selection_get_selected" gtk)
+(define-gtk gtk-tree-selection-select-iter (:pointer :pointer) :void
+   "gtk_tree_selection_select_iter" gtk)
+(define-gtk gtk-tree-selection-select-path (:pointer :pointer) :void
+   "gtk_tree_selection_select_path" gtk)
+(define-gtk gtk-tree-selection-path-is-selected (:pointer :pointer) :boolean
+   "gtk_tree_selection_path_is_selected" gtk)
+(define-gtk gtk-tree-model-get (:pointer :pointer :long :string :long) :void
+   "gtk_tree_model_get" gtk)
+(define-gtk gtk-tree-model-get-iter (:pointer :pointer :pointer) :boolean
+   "gtk_tree_model_get_iter" gtk)
+(define-gtk gtk-tree-model-get-string-from-iter (:pointer :pointer) :string
+   "gtk_tree_model_get_string_from_iter" gtk)
+(define-gtk gtk-tree-path-new-from-string (:string) :pointer
+   "gtk_tree_path_new_from_string" gtk)
+(define-gtk gtk-tree-path-free (:pointer) :void
+   "gtk_tree_path_free" gtk)
+(define-gtk gtk-tree-path-prev (:pointer) :boolean
+  "gtk_tree_path_prev" gtk)
+(define-gtk gtk-tree-path-next (:pointer) :boolean
+  "gtk_tree_path_next" gtk)
+(define-gtk gtk-tree-sortable-set-sort-column-id (:pointer :long :long) :void
+   "gtk_tree_sortable_set_sort_column_id" gtk)
+;;;;
+;;;; Expander widget
+;;;;
+(define-gtk gtk-expander-new (:string) :pointer
+   "gtk_expander_new" gtk)
+(define-gtk gtk-expander-new-with-mnemonic (:string) :pointer
+   "gtk_expander_new_with_mnemonic" gtk)
+(define-gtk gtk-expander-set-expanded (:pointer :boolean) :void
+   "gtk_expander_set_expanded" gtk)
+(define-gtk gtk-expander-get-expanded (:pointer) :boolean
+   "gtk_expander_get_expanded" gtk)
+(define-gtk gtk-expander-set-spacing (:pointer :long) :void
+   "gtk_expander_set_spacing" gtk)
+(define-gtk gtk-expander-get-spacing (:pointer) :long
+   "gtk_expander_get_spacing" gtk)
+;;;; 
+;;;;  Tooltips
+;;;;  Note: for these to work, you will need a widget which can process events, so
+;;;;  you may need to add an GtkEvent as the parent of some widgets 
+(define-gtk gtk-tooltips-new () :pointer
+  "gtk_tooltips_new" gtk)
+(define-gtk gtk-tooltips-enable (:pointer) :void
+  "gtk_tooltips_enable" gtk)
+(define-gtk gtk-tooltips-disable (:pointer) :void
+  "gtk_tooltips_disable" gtk)
+(define-gtk gtk-tooltips-set-tip (:pointer :pointer :string :string) :void
+  "gtk_tooltips_set_tip" gtk)
+(define-gtk gtk-tooltips-force-window (:pointer) :void
+  "gtk_tooltips_force_window" gtk)
+;;;;
+;;;; General GTK routines
+;;;;
+(define-gtk gtk-init (:pointer :pointer) :void
+   "gtk_init" gtk)
+(define-gtk gtk-widget-show (:pointer) :void
+   "gtk_widget_show" gtk)
+(define-gtk gtk-widget-show-all (:pointer) :void
+   "gtk_widget_show_all" gtk)
+(define-gtk gtk-widget-realize (:pointer) :void
+   "gtk_widget_realize" gtk)
+(define-gtk gtk-widget-unrealize (:pointer) :void
+   "gtk_widget_unrealize" gtk)
+(define-gtk gtk-widget-hide (:pointer) :void
+   "gtk_widget_hide" gtk)
+(define-gtk gtk-widget-destroy (:pointer) :void
+   "gtk_widget_destroy" gtk)
+(define-gtk gtk-widget-grab-focus (:pointer) :void
+   "gtk_widget_grab_focus" gtk)
+(define-gtk gtk-widget-set-size-request (:pointer :long :long) :void
+   "gtk_widget_set_size_request" gtk)
+(define-gtk gtk-widget-size-request (:pointer :pointer) :void
+   "gtk_widget_size_request" gtk)
+(define-gtk gtk-widget-set-usize (:pointer :long :long) :void
+   "gtk_widget_set_usize" gtk)
+(define-gtk gtk-widget-modify-base (:pointer :long :long) :void
+   "gtk_widget_modify_base" gtk)
+(define-gtk gtk-widget-modify-bg (:pointer :long :long) :void
+   "gtk_widget_modify_bg" gtk)
+(define-gtk gtk-widget-set-sensitive (:pointer :boolean) :void
+   "gtk_widget_set_sensitive" gtk)
+(define-gtk gtk-settings-get-default () :pointer
+   "gtk_settings_get_default" gtk)
+(define-gtk gtk-widget-get-parent (:pointer) :pointer
+   "gtk_widget_get_parent" gtk)
+(define-gtk gtk-widget-set-parent (:pointer :pointer) :void
+   "gtk_widget_set_parent" gtk)
+(define-gtk gtk-widget-reparent (:pointer :pointer) :void
+   "gtk_widget_reparent" gtk)
+(define-gtk gtk-widget-unparent (:pointer) :void
+   "gtk_widget_unparent" gtk)
+(define-gtk gtk-misc-set-alignment (:pointer :long :long) :void
+   "gtk_misc_set_alignment" gtk)
+(define-gtk gtk-main () :void
+   "gtk_main" gtk)
+(define-gtk gtk-main-iteration () :boolean
+   "gtk_main_iteration" gtk)
+(define-gtk gtk-main-iteration-do (:boolean) :boolean
+   "gtk_main_iteration_do" gtk)
+(define-gtk gtk-events-pending () :boolean
+   "gtk_events_pending" gtk)
+(define-gtk gtk-exit (:long) :void
+   "gtk_exit" gtk)
+(define-gtk gtk-main-quit () :void
+   "gtk_main_quit" gtk)
+(define-gtk gtk-rc-parse (:string) :void
+   "gtk_rc_parse" gtk)
+(define-gtk gtk-rc-parse-string (:string) :void
+   "gtk_rc_parse_string" gtk)
+(define-gtk gtk-rc-reparse-all () :boolean
+   "gtk_rc_reparse_all" gtk)
+(define-gtk gtk-rc-reset-styles (:pointer) :void
+   "gtk_rc_reset_styles" gtk)
+(define-gtk gtk-rc-add-default-file (:string) :void
+   "gtk_rc_add_default_file" gtk)
+(define-gtk gtk-widget-set-name (:pointer :string) :void
+   "gtk_widget_set_name" gtk)
+(define-gtk gtk-check-version (:long :long :long) :string
+   "gtk_check_version" gtk)
+(define-gtk gtk-drag-source-set (:pointer :long :long :long :long) :void
+   "gtk_drag_source_set" gtk)
+(define-gtk gtk-drag-dest-set (:pointer :long :long :long :long) :void
+   "gtk_drag_dest_set" gtk)
+(define-gtk gtk-drag-finish (:pointer :boolean :boolean :long) :void
+   "gtk_drag_finish" gtk)
+(define-gtk gtk-get-current-event () :pointer
+  "gtk_get_current_event" gtk)
+(define-gtk gtk-get-current-event-time () :long
+   "gtk_get_current_event_time" gtk)
+(define-gtk gtk-get-event-widget (:pointer) :pointer
+   "gtk_get_event_widget" gtk)
+(define-gtk gtk-widget-get-size-request (:pointer :pointer :pointer) :void
+   "gtk_widget_get_size_request" gtk)
+(define-gtk gtk-signal-emit-by-name (:pointer :string) :void
+   "gtk_signal_emit_by_name" gtk)
+(define-gtk gtk-invisible-new () :pointer
+   "gtk_invisible_new" gtk)
+
+(define-gtk gdk-pixbuf-new-from-file (:string :pointer) :pointer
+   "gdk_pixbuf_new_from_file" gtk)
+(define-gtk gdk-pixbuf-new-from-file-at-size (:string :long :long :pointer) :pointer
+   "gdk_pixbuf_new_from_file_at_size" gtk)
+(define-gtk gdk-pixbuf-rotate-simple (:pointer :long) :pointer
+   "gdk_pixbuf_rotate_simple" gtk)
+
+;;// (define-gtk g-object-get-data (:pointer :string) :object
+;;//   "g_object_get_data" gobject)
+;;// (define-gtk g-object-set-data (:pointer :string :object) :void
+;;//   "g_object_set_data" gobject)
+
+
+(define-gtk g-object-unref (:pointer) :void
+   "g_object_unref" gtk)
+(define-gtk g-object-ref (:pointer) :void
+   "g_object_ref" gtk)
+(define-gtk g-locale-to-utf8 (:string :long :pointer :pointer :pointer) :string
+   "g_locale_to_utf8" gtk)
+(define-gtk g-locale-from-utf8 (:string :long :pointer :pointer :pointer) :string
+   "g_locale_from_utf8" gtk)
+(define-gtk g-free (:pointer) :void
+   "g_free" gtk)
+(define-gtk g-printf (:string :pointer) :void
+   "g_printf" gtk)
+
+(provide "stklos-gtk-base")
