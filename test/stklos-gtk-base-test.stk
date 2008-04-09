@@ -2,7 +2,7 @@
 ;;;
 ;;;           Author: Erick Gallesio [eg@essi.fr]
 ;;;    Creation date: 01-Aug-2007 19:34 (eg)
-;;; Last file update:  5-Aug-2007 18:22 (eg)
+;;; Last file update:  9-Apr-2008 15:43 (eg)
 ;;;
 
 
@@ -16,11 +16,6 @@
   (gtk-main-quit)
   #f)
 
-
-(define (destroy widget data)
-  (printf "destroy widget=~S data=~S\n" widget data)
-  (gtk-main-quit))
-
 ;;;;
 ;;;; Application
 ;;;; 
@@ -28,7 +23,6 @@
 (define window #f)
 (define button #f)
 (define box1 #f)
-
 
 (gtk-init (void) (void))
 
@@ -57,8 +51,6 @@
 
 (gtk-widget-show box1)
 (gtk-widget-show window)
-
-
 
 ;; ----------------------------------------------------------------------
 ;;	run ...

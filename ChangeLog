@@ -1,0 +1,10 @@
+2008-04-08  Erick Gallesio  <eg at essi.fr>
+
+	* COPYING, README, doc/Makefile, doc/asciidoc.conf,
+	* doc/stklos-gtk-base.html, doc/stklos-gtk-base.txt,
+	* etc/meta, example/Makefile, example/simple.stk,
+	* stklos-gtk-base.spi, stklos-gtk-base.stk,
+	* test/stklos-gtk-base-test.spi, test/stklos-gtk-base-test.stk:
+	Initial Release
+	[fb27df3c127d] [tip]
+
