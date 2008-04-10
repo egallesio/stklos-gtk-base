@@ -5,6 +5,18 @@ Documentation for stklos-gtk-base
 Description
 -----------
 
+This package is a simple wrapping of the GTK+ library.  Programming
+with this package is very similar to programming a GUI in C. As a
+consequence, standard GTK+ documentation can easily be followed to
+build a GUI.
+
+The documentation given here is automatically generated and details on
+the package exported functions can be found in the standard 
+http://gtk.org/documentation.html/[GTK+ documentation]
+
+A simple GUI using this package is also available in 
+the http://www.stklos.org/Wiki/GUI/GTkBase/[STklos Wiki]
+
 
 Package API
 -----------
