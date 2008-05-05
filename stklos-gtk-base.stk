@@ -1,7 +1,7 @@
 ;;;;
 ;;;; stklos-gtk-base.stk	-- STklos interface to GTK (base level)
 ;;;; 
-;;;; Copyright © 2007 Erick Gallesio - I3S-CNRS/ESSI <eg@essi.fr>
+;;;; Copyright © 2007-2008 Erick Gallesio - I3S-CNRS/ESSI <eg@essi.fr>
 ;;;; 
 ;;;; 
 ;;;; This program is free software; you can redistribute it and/or modify
@@ -21,19 +21,38 @@
 ;;;; 
 ;;;;           Author: Erick Gallesio [eg@essi.fr]
 ;;;;    Creation date: 26-Jun-2007 15:19 (eg)
-;;;; Last file update:  2-Sep-2007 22:01 (eg)
+;;;; Last file update: 18-Apr-2008 17:07 (eg)
 ;;;;
 
+(when-compile 
+  (define (%build-path-from-shell-variable var)
+    (let ((path (getenv var)))
+      (if path
+	  (string-split path *path-separator*)
+	  '()))))
+
+
 (when-load-and-compile
+ (define *gtk-library-path*
+   (append (%build-path-from-shell-variable "STKLOS_GTK_DIR")
+	   '("/usr/lib"
+	     "/usr/local/lib"
+	     ;; For MacPorts
+	     "/opt/local/lib")))
+
+ (define *gtk-library-suffix* '("so" "dylib"))
+ 
  (define (find-gtk-library name)
-   (case name
-     ((gtk)     "libgtk-x11-2.0.so")
-     ((gdk)     "libgdk-x11-2.0.so")
-     ((glib)    "libglib-2.0.so")
-     ((gobject) "libgobject-2.0.so")
-     ((pango)   "libpango-1.0.so")
-     ((pixbuf)  "libgdk_pixbuf_xlib-2.0.so")
-     (else      (error "bad GTK+ libarary name ~S" name)))))
+   (let ((file (case name
+		 ((gtk)     "libgtk-x11-2.0")
+		 ((gdk)     "libgdk-x11-2.0")
+		 ((glib)    "libglib-2.0")
+		 ((gobject) "libgobject-2.0")
+		 ((pango)   "libpango-1.0")
+		 ((pixbuf)  "libgdk_pixbuf_xlib-2.0")
+		 (else      (error "bad GTK+ libarary name ~S" name)))))
+     (or (find-path file *gtk-library-path* *gtk-library-suffix*)
+	 (error "Cannot find GTK+ library file ~S" file)))))
 
 (when-compile 
  (define-macro (define-gtk name args return-type entry-name lib)
@@ -437,7 +456,7 @@
 ;;;; GDK functions and drawing stuff
 ;;;;
 (define-gtk gdk-font-load (:string) :pointer
-   "gdk_font_load" gtk)
+   "gdk_font_load" gdk)
 (define-gtk gdk-pixmap-new (:pointer :long :long :long) :pointer
    "gdk_pixmap_new" gdk)
 ;(define-gtk gdk-pixmap-unref (:pointer) :void
@@ -828,7 +847,7 @@
 (define-gtk gtk-editable-paste-clipboard (:pointer) :void
    "gtk_editable_paste_clipboard" gtk)
 (define-gtk gdk-atom-intern (:string :long) :pointer
-   "gdk_atom_intern" gtk)
+   "gdk_atom_intern" gdk)
 (define-gtk gtk-clipboard-get (:long) :pointer
    "gtk_clipboard_get" gtk)
 (define-gtk gtk-clipboard-set-text (:pointer :string :long) :void
@@ -1052,11 +1071,11 @@
    "gtk_invisible_new" gtk)
 
 (define-gtk gdk-pixbuf-new-from-file (:string :pointer) :pointer
-   "gdk_pixbuf_new_from_file" gtk)
+   "gdk_pixbuf_new_from_file" gdk)
 (define-gtk gdk-pixbuf-new-from-file-at-size (:string :long :long :pointer) :pointer
-   "gdk_pixbuf_new_from_file_at_size" gtk)
+   "gdk_pixbuf_new_from_file_at_size" gdk)
 (define-gtk gdk-pixbuf-rotate-simple (:pointer :long) :pointer
-   "gdk_pixbuf_rotate_simple" gtk)
+   "gdk_pixbuf_rotate_simple" gdk)
 
 ;;// (define-gtk g-object-get-data (:pointer :string) :object
 ;;//   "g_object_get_data" gobject)
@@ -1065,16 +1084,16 @@
 
 
 (define-gtk g-object-unref (:pointer) :void
-   "g_object_unref" gtk)
+   "g_object_unref" gobject)
 (define-gtk g-object-ref (:pointer) :void
-   "g_object_ref" gtk)
+   "g_object_ref" gobject)
 (define-gtk g-locale-to-utf8 (:string :long :pointer :pointer :pointer) :string
-   "g_locale_to_utf8" gtk)
+   "g_locale_to_utf8" gobject)
 (define-gtk g-locale-from-utf8 (:string :long :pointer :pointer :pointer) :string
    "g_locale_from_utf8" gtk)
 (define-gtk g-free (:pointer) :void
-   "g_free" gtk)
+   "g_free" gobject)
 (define-gtk g-printf (:string :pointer) :void
-   "g_printf" gtk)
+   "g_printf" gobject)
 
 (provide "stklos-gtk-base")
