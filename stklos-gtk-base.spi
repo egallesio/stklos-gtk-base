@@ -1,7 +1,7 @@
 ;;;;
 ;;;; stklos-gtk-base.spi	-- STklos interface to GTK (base level)
 ;;;; 
-;;;; Copyright © 2007 Erick Gallesio - I3S-CNRS/ESSI <eg@essi.fr>
+;;;; Copyright © 2007-2008 Erick Gallesio - I3S-CNRS/ESSI <eg@essi.fr>
 ;;;; 
 ;;;; 
 ;;;; This program is free software; you can redistribute it and/or modify
@@ -21,11 +21,14 @@
 ;;;; 
 ;;;;           Author: Erick Gallesio [eg@essi.fr]
 ;;;;    Creation date: 26-Jun-2007 15:19 (eg)
-;;;; Last file update:  2-Sep-2007 22:02 (eg)
+;;;; Last file update:  9-May-2008 23:58 (eg)
 ;;;;
 (interface stklos-gtk-base
   (language stklos)
   (export
+     ;; STklos Utility    
+     (find-gtk-library name)
+     ;; GTk functions
      (g-object-set-data widget0 string1 obj2)
      (g-object-get-data widget0 string1)
      
@@ -223,6 +226,7 @@
      (gtk-label-set-line-wrap widget0 boolean1)
      (gtk-label-set-selectable widget0 boolean1)
      (gtk-label-set-use-markup widget0 boolean1)
+     (gtk-label-get-justify widget0)
      (gtk-label-set-justify widget0 long1)
      (gtk-label-get-width-chars widget0)
      (gtk-label-get-max-width-chars widget0)
@@ -385,6 +389,9 @@
      (gtk-tooltips-disable widget0)
      (gtk-tooltips-set-tip widget0 widget1 string2 string3)
      (gtk-tooltips-force-window widget0)
+     (pango-font-description-from-string string0)
+     (pango-font-description-to-string pointer0)
+     (pango-font-description-free pointer0)
      (gtk-init widget0 widget1)
      (gtk-widget-show widget0)
      (gtk-widget-show-all widget0)
@@ -397,6 +404,7 @@
      (gtk-widget-size-request widget0 widget1)
      (gtk-widget-set-usize widget0 long1 long2)
      (gtk-widget-modify-base widget0 long1 long2)
+     (gtk-widget-modify-font pointer0 pointer1)
      (gtk-widget-modify-bg widget0 long1 long2)
      (gtk-widget-set-sensitive widget0 boolean1)
      (gtk-settings-get-default)
@@ -437,5 +445,5 @@
      (g-locale-to-utf8 string0 long1 widget2 widget3 widget4)
      (g-locale-from-utf8 string0 long1 widget2 widget3 widget4)
      (g-free widget0)
-     (g-printf string0 widget1))
+     (g-printf string0))
 )

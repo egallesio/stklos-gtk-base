@@ -21,26 +21,20 @@
 ;;;; 
 ;;;;           Author: Erick Gallesio [eg@essi.fr]
 ;;;;    Creation date: 26-Jun-2007 15:19 (eg)
-;;;; Last file update: 18-Apr-2008 17:07 (eg)
+;;;; Last file update:  9-May-2008 23:57 (eg)
 ;;;;
 
-(when-compile 
-  (define (%build-path-from-shell-variable var)
-    (let ((path (getenv var)))
-      (if path
-	  (string-split path *path-separator*)
-	  '()))))
-
-
-(when-load-and-compile
+(when-load-and-compile 
  (define *gtk-library-path*
-   (append (%build-path-from-shell-variable "STKLOS_GTK_DIR")
+   (append (build-path-from-shell-variable "STKLOS_GTK_DIR")
 	   '("/usr/lib"
 	     "/usr/local/lib"
 	     ;; For MacPorts
 	     "/opt/local/lib")))
-
- (define *gtk-library-suffix* '("so" "dylib"))
+ 
+ (define *gtk-library-suffix*
+   '("so"
+     "dylib"))
  
  (define (find-gtk-library name)
    (let ((file (case name
@@ -50,9 +44,13 @@
 		 ((gobject) "libgobject-2.0")
 		 ((pango)   "libpango-1.0")
 		 ((pixbuf)  "libgdk_pixbuf_xlib-2.0")
-		 (else      (error "bad GTK+ libarary name ~S" name)))))
+		 (else      (if (string? name)
+				name
+				(error "bad GTK+ libarary name ~S" name))))))
      (or (find-path file *gtk-library-path* *gtk-library-suffix*)
-	 (error "Cannot find GTK+ library file ~S" file)))))
+	 (error "Cannot find GTK+ library file ~S" file))))
+)
+
 
 (when-compile 
  (define-macro (define-gtk name args return-type entry-name lib)
@@ -457,10 +455,10 @@
 ;;;;
 (define-gtk gdk-font-load (:string) :pointer
    "gdk_font_load" gdk)
-(define-gtk gdk-pixmap-new (:pointer :long :long :long) :pointer
-   "gdk_pixmap_new" gdk)
+;(define-gtk gdk-pixmap-new (:pointer :long :long :long) :pointer
+;   "gdk_pixmap_new" gdk)
 ;(define-gtk gdk-pixmap-unref (:pointer) :void
-;   "gdk_pixmap_unref" #f pixbuf)
+;   "gdk_pixmap_unref" gdk)
 (define-gtk gdk-pixmap-create-from-xpm (:pointer :pointer :pointer :string) :pointer
    "gdk_pixmap_create_from_xpm" gdk)
 (define-gtk gdk-pixmap-colormap-create-from-xpm (:pointer :pointer :pointer :pointer :string) :pointer
@@ -582,6 +580,8 @@
    "gtk_label_set_selectable" gtk)
 (define-gtk gtk-label-set-use-markup (:pointer :boolean) :void
    "gtk_label_set_use_markup" gtk)
+(define-gtk gtk-label-get-justify (:pointer) :long
+   "gtk_label_get_justify" gtk)
 (define-gtk gtk-label-set-justify (:pointer :long) :void
    "gtk_label_set_justify" gtk)
 (define-gtk gtk-label-get-width-chars (:pointer) :long
@@ -982,6 +982,17 @@
   "gtk_tooltips_set_tip" gtk)
 (define-gtk gtk-tooltips-force-window (:pointer) :void
   "gtk_tooltips_force_window" gtk)
+
+;;;;;
+;;;;; Fonts
+;;;;;
+(define-gtk pango-font-description-from-string (:string) :pointer
+  "pango_font_description_from_string" pango)
+(define-gtk pango-font-description-to-string (:pointer) :string
+  "pango_font_description_to_string" pango)
+(define-gtk pango-font-description-free (:pointer) :void
+  "pango_font_description_free" pango)
+
 ;;;;
 ;;;; General GTK routines
 ;;;;
@@ -1009,6 +1020,8 @@
    "gtk_widget_set_usize" gtk)
 (define-gtk gtk-widget-modify-base (:pointer :long :long) :void
    "gtk_widget_modify_base" gtk)
+(define-gtk gtk-widget-modify-font (:pointer :pointer) :void
+  "gtk_widget_modify_font" gtk)
 (define-gtk gtk-widget-modify-bg (:pointer :long :long) :void
    "gtk_widget_modify_bg" gtk)
 (define-gtk gtk-widget-set-sensitive (:pointer :boolean) :void
@@ -1088,12 +1101,12 @@
 (define-gtk g-object-ref (:pointer) :void
    "g_object_ref" gobject)
 (define-gtk g-locale-to-utf8 (:string :long :pointer :pointer :pointer) :string
-   "g_locale_to_utf8" gobject)
+   "g_locale_to_utf8" glib)
 (define-gtk g-locale-from-utf8 (:string :long :pointer :pointer :pointer) :string
-   "g_locale_from_utf8" gtk)
+   "g_locale_from_utf8" glib)
 (define-gtk g-free (:pointer) :void
-   "g_free" gobject)
-(define-gtk g-printf (:string :pointer) :void
-   "g_printf" gobject)
+   "g_free" glib)
+(define-gtk g-printf (:string) :void
+   "g_printf" glib)
 
 (provide "stklos-gtk-base")

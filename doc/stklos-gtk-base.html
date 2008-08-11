@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<meta name="generator" content="AsciiDoc 8.2.5" />
+<meta name="generator" content="AsciiDoc 8.2.6" />
 <style type="text/css">
 /* Debug borders */
 p, li, dt, dd, div, pre, h1, h2, h3, h4, h5, h6 {
@@ -26,10 +26,12 @@ a:visited {
 
 em {
   font-style: italic;
+  color: navy;
 }
 
 strong {
   font-weight: bold;
+  color: #083194;
 }
 
 tt {
@@ -69,6 +71,10 @@ hr {
 p {
   margin-top: 0.5em;
   margin-bottom: 0.5em;
+}
+
+ul, ol, li > p {
+  margin-top: 0;
 }
 
 pre {
@@ -123,6 +129,7 @@ div.content { /* Block element content. */
 
 /* Block element titles. */
 div.title, caption.title {
+  color: #527bbd;
   font-family: sans-serif;
   font-weight: bold;
   text-align: left;
@@ -202,16 +209,19 @@ dl {
 dt {
   margin-top: 0.5em;
   margin-bottom: 0;
-  font-style: italic;
+  font-style: normal;
 }
 dd > *:first-child {
-  margin-top: 0;
+  margin-top: 0.1em;
 }
 
 ul, ol {
     list-style-position: outside;
 }
-div.olist2 ol {
+div.olist > ol {
+  list-style-type: decimal;
+}
+div.olist2 > ol {
   list-style-type: lower-alpha;
 }
 
@@ -231,11 +241,11 @@ div.hlist {
   margin-bottom: 0.8em;
 }
 div.hlist td {
-  padding-bottom: 5px;
+  padding-bottom: 15px;
 }
 td.hlist1 {
   vertical-align: top;
-  font-style: italic;
+  font-style: normal;
   padding-right: 0.8em;
 }
 td.hlist2 {
@@ -279,6 +289,7 @@ div.sidebar-content {
   padding: 0.5em;
 }
 div.sidebar-title, div.image-title {
+  color: #527bbd;
   font-family: sans-serif;
   font-weight: bold;
   margin-top: 0.0em;
@@ -302,6 +313,14 @@ div.exampleblock-content {
 
 /* IE6 sets dynamically generated links as visited. */
 div#toc a:visited { color: blue; }
+
+/* Because IE6 child selector is broken. */
+div.olist2 ol {
+  list-style-type: lower-alpha;
+}
+div.olist2 div.olist ol {
+  list-style-type: decimal;
+}
 </style>
 <title>Documentation for stklos-gtk-base</title>
 </head>
@@ -317,12 +336,33 @@ consequence, standard GTK+ documentation can easily be followed to
 build a GUI.</p></div>
 <div class="para"><p>The documentation given here is automatically generated and details on
 the package exported functions can be found in the standard
-<a href="http://gtk.org/documentation.html/">GTK+ documentation</a></p></div>
+<a href="http://gtk.org/documentation.html">GTK+ documentation</a></p></div>
 <div class="para"><p>A simple GUI using this package is also available in
-the <a href="http://www.stklos.org/Wiki/GUI/GTkBase/">STklos Wiki</a></p></div>
+the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></p></div>
 </div>
 <h2 id="_package_api">Package API</h2>
 <div class="sectionbody">
+<h3><a id="_find_gtk_library"></a>find-gtk-library</h3>
+<blockquote>
+<div class="listingblock">
+<div class="content">
+<pre><tt>(find-gtk-library name)</tt></pre>
+</div></div>
+<div class="vlist"><dl>
+<dt>
+<strong>Parameters</strong>
+</dt>
+<dd>
+<div class="ilist"><ul>
+<li>
+<p>
+<strong>name</strong>: todo
+</p>
+</li>
+</ul></div>
+</dd>
+</dl></div>
+</blockquote>
 <h3><a id="_g_object_set_data"></a>g-object-set-data</h3>
 <blockquote>
 <div class="listingblock">
@@ -10966,7 +11006,7 @@ the <a href="http://www.stklos.org/Wiki/GUI/GTkBase/">STklos Wiki</a></p></div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2008-04-10 11:01:50 CEST
+Last updated 2008-06-27 12:05:19 CEST
 </div>
 </div>
 </body>
