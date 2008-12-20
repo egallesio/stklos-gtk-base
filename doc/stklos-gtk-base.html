@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<meta name="generator" content="AsciiDoc 8.2.6" />
+<meta name="generator" content="AsciiDoc 8.3.0" />
+<title>Documentation for stklos-gtk-base</title>
 <style type="text/css">
 /* Debug borders */
 p, li, dt, dd, div, pre, h1, h2, h3, h4, h5, h6 {
@@ -165,13 +166,25 @@ div.listingblock > div.content {
   padding: 0.5em;
 }
 
-div.quoteblock > div.content {
+div.quoteblock {
   padding-left: 2.0em;
 }
-
-div.attribution {
+div.quoteblock > div.attribution {
+  padding-top: 0.5em;
   text-align: right;
 }
+
+div.verseblock {
+  padding-left: 2.0em;
+}
+div.verseblock > div.content {
+  white-space: pre;
+}
+div.verseblock > div.attribution {
+  padding-top: 0.75em;
+  text-align: left;
+}
+/* DEPRECATED: Pre version 8.2.7 verse style literal block. */
 div.verseblock + div.attribution {
   text-align: left;
 }
@@ -194,10 +207,6 @@ div.exampleblock > div.content {
   padding: 0.5em;
 }
 
-div.verseblock div.content {
-  white-space: pre;
-}
-
 div.imageblock div.content { padding-left: 0; }
 div.imageblock img { border: 1px solid silver; }
 span.image img { border-style: none; }
@@ -210,6 +219,7 @@ dt {
   margin-top: 0.5em;
   margin-bottom: 0;
   font-style: normal;
+  color: navy;
 }
 dd > *:first-child {
   margin-top: 0.1em;
@@ -225,6 +235,13 @@ div.olist2 > ol {
   list-style-type: lower-alpha;
 }
 
+div.compact ul, div.compact ol,
+div.compact p, div.compact p,
+div.compact div, div.compact div {
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+}
+
 div.tableblock > table {
   border: 3px solid #527bbd;
 }
@@ -235,21 +252,48 @@ thead {
 tfoot {
   font-weight: bold;
 }
+td > div.verse {
+  white-space: pre;
+}
+p.table {
+  margin-top: 0;
+}
+/* Because the table frame attribute is overriden by CSS in most browsers. */
+div.tableblock > table[frame="void"] {
+  border-style: none;
+}
+div.tableblock > table[frame="hsides"] {
+  border-left-style: none;
+  border-right-style: none;
+}
+div.tableblock > table[frame="vsides"] {
+  border-top-style: none;
+  border-bottom-style: none;
+}
 
-div.hlist {
+
+div.hdlist {
   margin-top: 0.8em;
   margin-bottom: 0.8em;
 }
-div.hlist td {
+div.hdlist tr {
   padding-bottom: 15px;
 }
-td.hlist1 {
+dt.hdlist1.strong, td.hdlist1.strong {
+  font-weight: bold;
+}
+td.hdlist1 {
   vertical-align: top;
   font-style: normal;
   padding-right: 0.8em;
+  color: navy;
 }
-td.hlist2 {
+td.hdlist2 {
   vertical-align: top;
+}
+div.hdlist.compact tr {
+  margin: 0;
+  padding-bottom: 0;
 }
 
 @media print {
@@ -302,8 +346,17 @@ div.listingblock div.content {
   padding: 0.5em;
 }
 
-div.quoteblock-content {
-  padding-left: 2.0em;
+div.quoteblock-attribution {
+  padding-top: 0.5em;
+  text-align: right;
+}
+
+div.verseblock-content {
+  white-space: pre;
+}
+div.verseblock-attribution {
+  padding-top: 0.75em;
+  text-align: left;
 }
 
 div.exampleblock-content {
@@ -322,7 +375,6 @@ div.olist2 div.olist ol {
   list-style-type: decimal;
 }
 </style>
-<title>Documentation for stklos-gtk-base</title>
 </head>
 <body>
 <div id="header">
@@ -330,14 +382,14 @@ div.olist2 div.olist ol {
 </div>
 <h2 id="_description">Description</h2>
 <div class="sectionbody">
-<div class="para"><p>This package is a simple wrapping of the GTK+ library.  Programming
+<div class="paragraph"><p>This package is a simple wrapping of the GTK+ library.  Programming
 with this package is very similar to programming a GUI in C. As a
 consequence, standard GTK+ documentation can easily be followed to
 build a GUI.</p></div>
-<div class="para"><p>The documentation given here is automatically generated and details on
+<div class="paragraph"><p>The documentation given here is automatically generated and details on
 the package exported functions can be found in the standard
 <a href="http://gtk.org/documentation.html">GTK+ documentation</a></p></div>
-<div class="para"><p>A simple GUI using this package is also available in
+<div class="paragraph"><p>A simple GUI using this package is also available in
 the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></p></div>
 </div>
 <h2 id="_package_api">Package API</h2>
@@ -348,12 +400,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(find-gtk-library name)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>name</strong>: todo
@@ -369,12 +421,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(g-object-set-data widget0 string1 obj2)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -400,12 +452,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(g-object-get-data widget0 string1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -426,12 +478,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-window-new long0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>long0</strong>: todo
@@ -447,12 +499,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-window-set-title widget0 string1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -473,12 +525,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-window-get-title widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -494,12 +546,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-window-set-default-size widget0 long1 long2)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -525,12 +577,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-window-get-position widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -546,12 +598,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-window-set-position widget0 long1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -572,12 +624,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-window-set-resizable widget0 boolean1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -598,12 +650,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-window-get-resizable widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -619,12 +671,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-window-get-modal widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -640,12 +692,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-window-set-modal widget0 boolean1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -666,12 +718,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-window-set-transient-for widget0 widget1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -692,12 +744,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-window-maximize widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -718,12 +770,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   long3
   string4)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -762,12 +814,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   string1
   widget2)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -793,12 +845,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-window-set-keep-above widget0 boolean1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -819,12 +871,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-window-set-keep-below widget0 boolean1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -845,12 +897,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-about-dialog-set-version widget0 string1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -871,12 +923,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-window-set-policy widget0 long1 long2 long3)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -907,12 +959,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-table-new long0 long1 boolean2)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>long0</strong>: todo
@@ -944,12 +996,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   long4
   long5)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -990,12 +1042,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-container-add widget0 widget1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -1016,12 +1068,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-container-remove widget0 widget1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -1042,12 +1094,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-container-set-border-width widget0 long1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -1068,12 +1120,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-hbox-new boolean0 long1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>boolean0</strong>: todo
@@ -1094,12 +1146,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-vbox-new boolean0 long1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>boolean0</strong>: todo
@@ -1125,12 +1177,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   boolean3
   long4)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -1171,12 +1223,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   boolean3
   long4)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -1212,12 +1264,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-box-pack-start-defaults widget0 widget1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -1238,12 +1290,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-box-pack-end-defaults widget0 widget1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -1271,12 +1323,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-button-new-with-label string0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>string0</strong>: todo
@@ -1292,12 +1344,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-button-new-from-stock string0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>string0</strong>: todo
@@ -1313,12 +1365,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-button-new-with-mnemonic string0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>string0</strong>: todo
@@ -1334,12 +1386,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-button-set-use-stock widget0 boolean1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -1360,12 +1412,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-button-set-label widget0 string1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -1386,12 +1438,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-button-get-label widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -1407,12 +1459,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-button-set-image widget0 widget1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -1433,12 +1485,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-button-get-image widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -1454,12 +1506,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-button-get-relief widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -1475,12 +1527,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-button-set-relief widget0 long1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -1508,12 +1560,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-toggle-button-new-with-label string0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>string0</strong>: todo
@@ -1529,12 +1581,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-toggle-button-get-active widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -1550,12 +1602,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-toggle-button-set-active widget0 boolean1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -1576,12 +1628,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-check-button-new-with-label string0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>string0</strong>: todo
@@ -1604,12 +1656,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-entry-get-text widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -1625,12 +1677,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-entry-set-text widget0 string1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -1651,12 +1703,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-entry-set-visibility widget0 boolean1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -1677,12 +1729,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-editable-delete-text widget0 long1 long2)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -1708,12 +1760,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-editable-get-chars widget0 long1 long2)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -1739,12 +1791,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-editable-set-editable widget0 boolean1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -1765,12 +1817,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-editable-select-region widget0 long1 long2)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -1796,12 +1848,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-text-buffer-new widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -1817,12 +1869,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-text-buffer-set-text widget0 string1 long2)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -1851,12 +1903,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   string1
   long2)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -1882,12 +1934,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-text-buffer-get-insert widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -1903,12 +1955,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-text-buffer-get-start-iter widget0 widget1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -1929,12 +1981,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-text-buffer-get-end-iter widget0 widget1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -1958,12 +2010,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   widget1
   widget2)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -1992,12 +2044,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   widget1
   widget2)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -2026,12 +2078,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   widget1
   long2)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -2061,12 +2113,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   widget2
   boolean3)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -2101,12 +2153,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   string2
   long3)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -2142,12 +2194,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   long3
   widget4)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -2191,12 +2243,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   string6
   widget7)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -2251,12 +2303,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   widget2
   widget3)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -2291,12 +2343,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   widget2
   widget3)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -2330,12 +2382,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   widget1
   widget2)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -2361,12 +2413,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-text-buffer-get-tag-table widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -2385,12 +2437,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   widget1
   widget2)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -2416,12 +2468,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-text-buffer-get-selection-bound widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -2437,12 +2489,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-text-buffer-get-line-count widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -2462,12 +2514,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   widget2
   boolean3)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -2501,12 +2553,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   widget1
   widget2)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -2535,12 +2587,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   widget1
   long2)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -2566,12 +2618,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-text-buffer-delete widget0 widget1 widget2)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -2597,12 +2649,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-text-buffer-delete-mark widget0 widget1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -2625,12 +2677,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   widget0
   string1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -2651,12 +2703,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-text-buffer-place-cursor widget0 widget1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -2677,12 +2729,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-text-buffer-copy-clipboard widget0 widget1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -2706,12 +2758,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   widget1
   boolean2)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -2741,12 +2793,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   widget2
   boolean3)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -2777,12 +2829,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-scrolled-window-new widget0 widget1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -2806,12 +2858,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   long1
   long2)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -2839,12 +2891,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   widget0
   long1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -2867,12 +2919,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   widget0
   widget1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -2893,12 +2945,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-scrolled-window-get-hadjustment widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -2914,12 +2966,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-scrolled-window-get-vadjustment widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -2935,12 +2987,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-text-view-new-with-buffer widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -2956,12 +3008,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-text-view-set-wrap-mode widget0 long1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -2982,12 +3034,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-text-view-set-editable widget0 boolean1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -3011,12 +3063,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   long1
   long2)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -3044,12 +3096,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   widget0
   widget1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -3076,12 +3128,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   double4
   double5)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -3124,12 +3176,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   widget0
   widget1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -3152,12 +3204,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   widget0
   long1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -3178,12 +3230,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-text-view-get-pixels-inside-wrap widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -3201,12 +3253,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   widget0
   long1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -3227,12 +3279,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-text-view-get-pixels-above-lines widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -3250,12 +3302,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   widget0
   boolean1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -3282,12 +3334,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   widget4
   widget5)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -3334,12 +3386,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   widget4
   widget5)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -3381,12 +3433,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <pre><tt>(gtk-text-iter-forward-visible-cursor-position
   widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -3402,12 +3454,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-text-iter-forward-to-line-end widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -3423,12 +3475,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-text-iter-set-line widget0 long1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -3449,12 +3501,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-text-iter-set-line-offset widget0 long1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -3475,12 +3527,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-text-iter-set-line-index widget0 long1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -3501,12 +3553,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-text-iter-get-text widget0 widget1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -3527,12 +3579,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-text-iter-get-line widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -3555,12 +3607,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-text-view-get-buffer widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -3576,12 +3628,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-text-view-set-buffer widget0 pointer1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -3602,12 +3654,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-text-tag-table-remove widget0 widget1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -3628,12 +3680,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-text-new widget0 widget1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -3654,12 +3706,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-text-set-editable widget0 long1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -3686,12 +3738,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   string4
   long5)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -3735,12 +3787,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   widget1
   widget2)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -3766,12 +3818,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-text-get-length widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -3787,12 +3839,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-text-set-word-wrap widget0 long1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -3813,12 +3865,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-text-backward-delete widget0 long1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -3839,12 +3891,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-text-forward-delete widget0 long1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -3865,12 +3917,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-text-set-point widget0 long1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -3898,12 +3950,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-toolbar-insert widget0 pointer1 long2)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -3929,12 +3981,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-toolbar-get-orientation widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -3950,12 +4002,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-toolbar-set-orientation widget0 long)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -3976,12 +4028,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-toolbar-get-style widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -3997,12 +4049,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-toolbar-set-style widget0 long)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -4023,12 +4075,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-tool-button-new widget0 string1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -4049,12 +4101,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-tool-button-get-icon-widget widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -4070,12 +4122,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-tool-button-set-icon-widget widget0 widget1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -4103,12 +4155,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gdk-font-load string0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>string0</strong>: todo
@@ -4124,12 +4176,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gdk-pixmap-new widget0 long1 long2 long3)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -4164,12 +4216,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   widget2
   string3)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -4205,12 +4257,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   widget3
   string4)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -4253,12 +4305,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   long5
   long6)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -4313,12 +4365,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   long7
   long8)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -4380,12 +4432,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   long4
   long5)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -4426,12 +4478,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gdk-draw-point widget0 widget1 long2 long3)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -4467,12 +4519,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   long3
   widget4)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -4517,12 +4569,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   long7
   long8)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -4578,12 +4630,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gdk-gc-new widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -4599,12 +4651,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gdk-gc-set-rgb-fg-color widget0 widget1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -4625,12 +4677,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gdk-gc-set-rgb-bg-color widget0 widget1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -4651,12 +4703,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gdk-gc-set-foreground widget0 widget1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -4677,12 +4729,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gdk-gc-set-background widget0 widget1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -4703,12 +4755,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gdk-gc-set-colormap widget0 widget1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -4729,12 +4781,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gdk-color-alloc widget0 widget1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -4755,12 +4807,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gdk-color-parse string0 widget1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>string0</strong>: todo
@@ -4792,12 +4844,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   boolean2
   boolean3)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -4835,12 +4887,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gdk-rgb-find-color widget0 widget1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -4861,12 +4913,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gdk-drawable-set-colormap widget0 widget1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -4887,12 +4939,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gdk-drawable-get-size widget0 widget1 widget2)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -4926,12 +4978,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   widget6
   widget7)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -4995,12 +5047,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   string4
   widget5)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -5048,12 +5100,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gdk-screen-get-width widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -5069,12 +5121,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gdk-screen-get-height widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -5111,12 +5163,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gdk-init widget0 widget1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -5149,12 +5201,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   widget3
   widget4)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -5197,12 +5249,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-image-new-from-pixmap widget0 widget1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -5223,12 +5275,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-image-set-from-pixbuf widget0 widget1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -5252,12 +5304,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   widget1
   widget2)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -5283,12 +5335,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-image-set widget0 widget1 widget2)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -5314,12 +5366,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-image-set-from-file widget0 string1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -5340,12 +5392,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-image-new-from-file string0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>string0</strong>: todo
@@ -5361,12 +5413,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-image-new-from-stock string0 long1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>string0</strong>: todo
@@ -5387,12 +5439,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-pixmap-new widget0 widget1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -5420,12 +5472,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-widget-queue-draw widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -5441,12 +5493,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-widget-get-colormap widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -5462,12 +5514,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-widget-get-parent-window widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -5483,12 +5535,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-widget-create-pango-layout widget0 string1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -5509,12 +5561,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-vscrollbar-new widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -5530,12 +5582,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-label-new string0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>string0</strong>: todo
@@ -5551,12 +5603,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-label-set-text widget0 string1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -5577,12 +5629,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-label-get-text widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -5598,12 +5650,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-label-set-line-wrap widget0 boolean1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -5624,12 +5676,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-label-set-selectable widget0 boolean1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -5650,12 +5702,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-label-set-use-markup widget0 boolean1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -5676,12 +5728,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-label-set-justify widget0 long1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -5702,12 +5754,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-label-get-width-chars widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -5723,12 +5775,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-label-get-max-width-chars widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -5746,12 +5798,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   widget0
   string1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -5772,12 +5824,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-frame-new widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -5793,12 +5845,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-frame-set-label-align widget0 long1 long2)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -5824,12 +5876,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-frame-set-label widget0 string1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -5850,12 +5902,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-frame-get-label widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -5871,12 +5923,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-frame-get-shadow-type widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -5892,12 +5944,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-frame-set-shadow-type widget0 long1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -5923,12 +5975,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   long3
   boolean4)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>string0</strong>: todo
@@ -5969,12 +6021,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   long3
   boolean4)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -6010,12 +6062,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-radio-button-new widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -6031,12 +6083,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-radio-button-new-with-label widget0 string1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -6057,12 +6109,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-radio-button-new-from-widget widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -6080,12 +6132,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   widget0
   string1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -6113,12 +6165,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-notebook-set-tab-pos widget0 long1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -6139,12 +6191,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-notebook-popup-enable widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -6164,12 +6216,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   widget2
   long3)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -6200,12 +6252,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-notebook-remove-page widget0 long1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -6226,12 +6278,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-notebook-get-current-page widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -6247,12 +6299,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-notebook-set-current-page widget0 long1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -6276,12 +6328,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   widget1
   string2)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -6313,12 +6365,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   double4
   double5)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>double0</strong>: todo
@@ -6359,12 +6411,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-adjustment-get-value widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -6380,12 +6432,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-adjustment-set-value widget0 double1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -6406,12 +6458,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-range-get-adjustment widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -6427,12 +6479,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-range-get-value widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -6448,12 +6500,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-range-set-value widget0 double1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -6474,12 +6526,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-scale-set-draw-value widget0 boolean1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -6500,12 +6552,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-scale-set-value-pos widget0 long1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -6526,12 +6578,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-hscale-new widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -6550,12 +6602,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   double1
   double2)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>double0</strong>: todo
@@ -6584,12 +6636,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   double1
   double2)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>double0</strong>: todo
@@ -6615,12 +6667,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-spin-button-new widget0 double1 long2)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -6649,12 +6701,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   double1
   double2)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>double0</strong>: todo
@@ -6680,12 +6732,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-spin-button-get-value-as-int widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -6701,12 +6753,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-spin-button-get-value widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -6722,12 +6774,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-spin-button-set-wrap widget0 boolean1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -6748,12 +6800,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-spin-button-set-value widget0 double1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -6774,12 +6826,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-arrow-new long0 long1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>long0</strong>: todo
@@ -6808,12 +6860,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   long6
   widget7)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>string0</strong>: todo
@@ -6864,12 +6916,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-file-chooser-widget-new long0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>long0</strong>: todo
@@ -6885,12 +6937,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-dialog-run widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -6906,12 +6958,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-file-chooser-get-filename widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -6927,12 +6979,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-file-chooser-set-filename widget0 string1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -6960,12 +7012,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-file-filter-add-pattern widget0 string1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -6986,12 +7038,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-file-filter-set-name widget0 string1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -7012,12 +7064,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-file-chooser-add-filter widget0 widget1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -7038,12 +7090,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-font-selection-dialog-new string0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>string0</strong>: todo
@@ -7059,12 +7111,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-font-selection-dialog-get-font-name widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -7087,12 +7139,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-font-selection-get-font-name widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -7110,12 +7162,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   widget0
   string1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -7145,12 +7197,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   widget0
   boolean1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -7173,12 +7225,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   widget0
   string1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -7201,12 +7253,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   widget0
   widget1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -7227,12 +7279,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-color-selection-set-color widget0 string1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -7260,12 +7312,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-menu-shell-append widget0 widget1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -7293,12 +7345,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-menu-item-new-with-label string0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>string0</strong>: todo
@@ -7314,12 +7366,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-menu-item-new-with-mnemonic string0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>string0</strong>: todo
@@ -7344,12 +7396,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   widget0
   boolean1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -7370,12 +7422,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-menu-item-set-submenu widget0 widget1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -7396,12 +7448,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-check-menu-item-new-with-label string0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>string0</strong>: todo
@@ -7417,12 +7469,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-check-menu-item-new-with-mnemonic string0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>string0</strong>: todo
@@ -7438,12 +7490,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-check-menu-item-get-active widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -7459,12 +7511,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-check-menu-item-set-active widget0 boolean1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -7492,12 +7544,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   long5
   long6)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -7550,12 +7602,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-progress-bar-set-text widget0 string1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -7576,12 +7628,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-progress-bar-set-fraction widget0 double1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -7602,12 +7654,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-progress-bar-pulse widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -7623,12 +7675,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-progress-bar-set-pulse-step widget0 double1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -7653,12 +7705,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   double2
   double3)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -7689,12 +7741,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-progress-set-value widget0 double1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -7722,12 +7774,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-statusbar-get-context-id widget0 string1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -7748,12 +7800,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-statusbar-push widget0 long1 string2)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -7779,12 +7831,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-statusbar-pop widget0 long1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -7805,12 +7857,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-statusbar-remove widget0 long1 long2)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -7838,12 +7890,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   widget0
   boolean1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -7878,12 +7930,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-combo-box-append-text widget0 string1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -7904,12 +7956,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-combo-box-insert-text widget0 long1 string2)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -7935,12 +7987,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-combo-box-prepend-text widget0 string1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -7961,12 +8013,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-combo-box-remove-text widget0 long1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -7987,12 +8039,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-combo-box-get-active widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -8008,12 +8060,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-combo-box-set-active widget0 long1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -8034,12 +8086,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-combo-box-get-active-text widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -8048,6 +8100,13 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 </ul></div>
 </dd>
 </dl></div>
+</blockquote>
+<h3><a id="_gtk_combo_box_entry_new_text"></a>gtk-combo-box-entry-new-text</h3>
+<blockquote>
+<div class="listingblock">
+<div class="content">
+<pre><tt>(gtk-combo-box-entry-new-text)</tt></pre>
+</div></div>
 </blockquote>
 <h3><a id="_gtk_vseparator_new"></a>gtk-vseparator-new</h3>
 <blockquote>
@@ -8069,12 +8128,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-editable-copy-clipboard widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -8090,12 +8149,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-editable-cut-clipboard widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -8111,12 +8170,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-editable-paste-clipboard widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -8132,12 +8191,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gdk-atom-intern string0 long1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>string0</strong>: todo
@@ -8158,12 +8217,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-clipboard-get long0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>long0</strong>: todo
@@ -8179,12 +8238,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-clipboard-set-text widget0 string1 long2)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -8210,12 +8269,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-clipboard-wait-for-text widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -8231,12 +8290,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-clist-new long0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>long0</strong>: todo
@@ -8255,12 +8314,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   long1
   string2)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -8286,12 +8345,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-clist-column-titles-show widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -8307,12 +8366,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-clist-append widget0 widget1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -8333,12 +8392,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-clist-set-text widget0 long1 long2 string3)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -8376,12 +8435,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-fixed-put widget0 widget1 long2 long3)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -8412,12 +8471,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-fixed-move widget0 widget1 long2 long3)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -8448,12 +8507,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-list-store-new long0 long1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>long0</strong>: todo
@@ -8474,12 +8533,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-list-store-append widget0 widget1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -8505,12 +8564,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   string3
   long4)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -8550,12 +8609,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   long2
   string3)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -8586,12 +8645,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-list-store-clear widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -8607,12 +8666,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-list-store-remove widget0 widget1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -8636,12 +8695,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   widget1
   widget2)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -8670,12 +8729,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   widget1
   widget2)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -8701,12 +8760,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-list-store-insert widget0 widget1 widget2)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -8738,12 +8797,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   string4
   long5)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -8791,12 +8850,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-tree-view-new-with-model widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -8824,12 +8883,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   long3
   widget4)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>string0</strong>: todo
@@ -8868,12 +8927,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   widget1
   boolean2)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -8899,12 +8958,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-tree-view-append-column widget0 widget1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -8927,12 +8986,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   widget0
   boolean1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -8955,12 +9014,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   widget0
   boolean1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -8981,12 +9040,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-tree-view-get-selection widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -9002,12 +9061,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-tree-view-get-hadjustment widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -9023,12 +9082,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-tree-view-get-vadjustment widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -9046,12 +9105,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   widget0
   boolean1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -9074,12 +9133,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   widget0
   boolean1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -9106,12 +9165,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   long4
   long5)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -9155,12 +9214,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   widget1
   widget2)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -9186,12 +9245,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-tree-selection-select-iter widget0 widget1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -9212,12 +9271,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-tree-selection-select-path widget0 widget1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -9240,12 +9299,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   widget0
   widget1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -9271,12 +9330,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   string3
   long4)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -9312,12 +9371,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-tree-model-get-iter widget0 widget1 widget2)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -9345,12 +9404,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   widget0
   widget1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -9371,12 +9430,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-tree-path-new-from-string string0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>string0</strong>: todo
@@ -9392,12 +9451,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-tree-path-free widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -9413,12 +9472,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-tree-path-prev widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -9434,12 +9493,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-tree-path-next widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -9458,12 +9517,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   long1
   long2)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -9489,12 +9548,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-expander-new string0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>string0</strong>: todo
@@ -9510,12 +9569,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-expander-new-with-mnemonic string0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>string0</strong>: todo
@@ -9531,12 +9590,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-expander-set-expanded widget0 boolean1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -9557,12 +9616,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-expander-get-expanded widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -9578,12 +9637,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-expander-set-spacing widget0 long1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -9604,12 +9663,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-expander-get-spacing widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -9632,12 +9691,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-tooltips-enable widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -9653,12 +9712,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-tooltips-disable widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -9678,12 +9737,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   string2
   string3)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -9714,12 +9773,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-tooltips-force-window widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -9735,12 +9794,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-init widget0 widget1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -9761,12 +9820,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-widget-show widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -9782,12 +9841,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-widget-show-all widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -9803,12 +9862,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-widget-realize widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -9824,12 +9883,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-widget-unrealize widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -9845,12 +9904,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-widget-hide widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -9866,12 +9925,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-widget-destroy widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -9887,12 +9946,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-widget-grab-focus widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -9908,12 +9967,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-widget-set-size-request widget0 long1 long2)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -9939,12 +9998,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-widget-size-request widget0 widget1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -9965,12 +10024,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-widget-set-usize widget0 long1 long2)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -9996,12 +10055,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-widget-modify-base widget0 long1 long2)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -10027,12 +10086,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-widget-modify-bg widget0 long1 long2)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -10058,12 +10117,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-widget-set-sensitive widget0 boolean1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -10091,12 +10150,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-widget-get-parent widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -10112,12 +10171,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-widget-set-parent widget0 widget1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -10138,12 +10197,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-widget-reparent widget0 widget1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -10164,12 +10223,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-widget-unparent widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -10185,12 +10244,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-misc-set-alignment widget0 long1 long2)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -10230,12 +10289,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-main-iteration-do boolean0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>boolean0</strong>: todo
@@ -10258,12 +10317,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-exit long0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>long0</strong>: todo
@@ -10286,12 +10345,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-rc-parse string0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>string0</strong>: todo
@@ -10307,12 +10366,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-rc-parse-string string0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>string0</strong>: todo
@@ -10335,12 +10394,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-rc-reset-styles widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -10356,12 +10415,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-rc-add-default-file string0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>string0</strong>: todo
@@ -10377,12 +10436,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-widget-set-name widget0 string1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -10403,12 +10462,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-check-version long0 long1 long2)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>long0</strong>: todo
@@ -10439,12 +10498,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   long3
   long4)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -10485,12 +10544,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   long3
   long4)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -10526,12 +10585,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-drag-finish widget0 boolean1 boolean2 long3)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -10576,12 +10635,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-get-event-widget pointer0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>pointer0</strong>: todo
@@ -10600,12 +10659,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   widget1
   widget2)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -10631,12 +10690,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gtk-signal-emit-by-name widget0 string1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -10664,12 +10723,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gdk-pixbuf-new-from-file string0 widget1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>string0</strong>: todo
@@ -10694,12 +10753,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   long2
   widget3)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>string0</strong>: todo
@@ -10730,12 +10789,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(gdk-pixbuf-rotate-simple widget0 long1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -10756,12 +10815,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(g-signal-connect widget name proc data)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget</strong>: todo
@@ -10792,12 +10851,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(g-signal-connect-after widget name proc data)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget</strong>: todo
@@ -10828,12 +10887,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(g-object-ref widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -10849,12 +10908,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(g-object-unref widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -10875,12 +10934,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   widget3
   widget4)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>string0</strong>: todo
@@ -10921,12 +10980,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
   widget3
   widget4)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>string0</strong>: todo
@@ -10962,12 +11021,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(g-free widget0)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>widget0</strong>: todo
@@ -10983,12 +11042,12 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="content">
 <pre><tt>(g-printf string0 widget1)</tt></pre>
 </div></div>
-<div class="vlist"><dl>
-<dt>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>Parameters</strong>
 </dt>
 <dd>
-<div class="ilist"><ul>
+<div class="ulist"><ul>
 <li>
 <p>
 <strong>string0</strong>: todo
@@ -11006,7 +11065,7 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2008-06-27 12:05:19 CEST
+Last updated 2008-12-20 20:07:33 CEST
 </div>
 </div>
 </body>

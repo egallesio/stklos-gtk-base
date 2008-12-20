@@ -3801,6 +3801,15 @@ gtk-combo-box-get-active-text
 *Parameters*::
 - *widget0*: todo
 
+
+gtk-combo-box-entry-new-text
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------
+(gtk-combo-box-entry-new-text)
+---------------------------------------------------------
+
+
 gtk-vseparator-new
 ~~~~~~~~~~~~~~~~~~
 
