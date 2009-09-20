@@ -1,7 +1,7 @@
 ;;;;
 ;;;; stklos-gtk-base.stk	-- STklos interface to GTK (base level)
 ;;;; 
-;;;; Copyright © 2007-2008 Erick Gallesio - I3S-CNRS/ESSI <eg@essi.fr>
+;;;; Copyright © 2007-2009 Erick Gallesio - I3S-CNRS/ESSI <eg@essi.fr>
 ;;;; 
 ;;;; 
 ;;;; This program is free software; you can redistribute it and/or modify
@@ -21,7 +21,7 @@
 ;;;; 
 ;;;;           Author: Erick Gallesio [eg@essi.fr]
 ;;;;    Creation date: 26-Jun-2007 15:19 (eg)
-;;;; Last file update: 20-Dec-2008 20:03 (eg)
+;;;; Last file update: 19-Aug-2009 19:22 (eg)
 ;;;;
 
 (when-load-and-compile 
@@ -46,7 +46,7 @@
 		 ((pixbuf)  "libgdk_pixbuf_xlib-2.0")
 		 (else      (if (string? name)
 				name
-				(error "bad GTK+ libarary name ~S" name))))))
+				(error "bad GTK+ library name ~S" name))))))
      (or (find-path file *gtk-library-path* *gtk-library-suffix*)
 	 (error "Cannot find GTK+ library file ~S" file))))
 )
@@ -72,33 +72,34 @@
 (require-library "ffi")
 
 (define *event-name* '(
-  "event"
-  "button_press_event"
-  "button_release_event"
-  "scroll_event"
-  "motion_notify_event"
-  "delete_event"
-  "destroy_event"
-  "expose_event"
-  "key_press_event"
-  "key_release_event"
-  "enter_notify_event"
-  "leave_notify_event"
-  "configure_event"
-  "focus_in_event"
-  "focus_out_event"
-  "map_event"
-  "unmap_event"
-  "property_notify_event"
-  "selection_clear_event"
-  "selection_request_event"
-  "selection_notify_event"
-  "proximity_in_event"
-  "proximity_out_event"
-  "visibility_notify_event"
-  "client_event"
-  "no_expose_event"
-  "window_state_event"))
+  "event"			
+  "button_press_event"		  "button-press-event"
+  "button_release_event"	  "button-release-event"
+  "scroll_event"		  "scroll-event"
+  "motion_notify_event"		  "motion-notify-event"
+  "delete_event"		  "delete-event"
+  "destroy_event"		  "destroy-event"
+  "expose_event"		  "expose-event"
+  "key_press_event"		  "key-press-event"
+  "key_release_event"		  "key-release-event"
+  "enter_notify_event"		  "enter-notify-event"
+  "leave_notify_event"		  "leave-notify-event"
+  "configure_event"		  "configure-event"
+  "focus_in_event"		  "focus-in-event"
+  "focus_out_event"		  "focus-out-event"
+  "map_event"		  	  "map-event"
+  "unmap_event"		  	  "unmap-event"
+  "property_notify_event"	  "property-notify-event"
+  "selection_clear_event"	  "selection-clear-event"
+  "selection_request_event"	  "selection-request-event"
+  "selection_notify_event"	  "selection-notify-event"
+  "proximity_in_event"		  "proximity-in-event"
+  "proximity_out_event"		  "proximity-out-event"
+  "visibility_notify_event"	  "visibility-notify-event"
+  "client_event"		  "client-event"
+  "no_expose_event"		  "no-expose-event"
+  "window_state_event"		  "window-state-event"
+))
 
 
 ;; ----------------------------------------------------------------------
@@ -170,6 +171,9 @@
    "gtk_window_maximize" gtk)
 (define-gtk gtk-message-dialog-new (:pointer :long :long :long :string) :pointer
    "gtk_message_dialog_new" gtk)
+(define-gtk gtk-message-dialog-new-with-markup (:pointer :long :long :long :string)
+  					       :pointer
+   "gtk_message_dialog_new_with_markup" gtk)
 (define-gtk gtk-window-set-icon-from-file (:pointer :string :pointer) :boolean
    "gtk_window_set_icon_from_file" gtk)
 (define-gtk gtk-window-set-keep-above (:pointer :boolean) :void
@@ -190,9 +194,12 @@
 ;;;;
 (define-gtk gtk-table-new (:long :long :boolean) :pointer
    "gtk_table_new" gtk)
-(define-gtk gtk-table-attach-defaults (:pointer :pointer :long :long :long :long)
+(define-gtk gtk-table-attach-defaults (:pointer :pointer :uint :uint :uint :uint)
   :void
   "gtk_table_attach_defaults" gtk)
+(define-gtk gtk-table-attach (:pointer :pointer :uint :uint :uint :uint :uint :uint :uint :uint)
+  :void
+  "gtk_table_attach" gtk)
 (define-gtk gtk-container-add (:pointer :pointer) :void
    "gtk_container_add" gtk)
 (define-gtk gtk-container-remove (:pointer :pointer) :void
@@ -277,6 +284,10 @@
    "gtk_editable_set_editable" gtk)
 (define-gtk gtk-editable-select-region (:pointer :long :long) :void
    "gtk_editable_select_region" gtk)
+(define-gtk gtk-editable-get-position (:pointer) :long
+   "gtk_editable_get_position" gtk)
+(define-gtk gtk-editable-set-position (:pointer :long) :void
+   "gtk_editable_set_position" gtk)
 ;;;;
 ;;;; GTK_TEXT_VIEW related(GTK2.x)
 ;;;;
@@ -675,6 +686,8 @@
 ;;;;
 ;;;; GTK_VSCALE
 ;;;;
+(define-gtk gtk-vscale-new (:pointer) :pointer
+   "gtk_vscale_new" gtk)
 (define-gtk gtk-vscale-new-with-range (:double :double :double) :pointer
    "gtk_vscale_new_with_range" gtk)
 ;;;;
@@ -799,6 +812,16 @@
    "gtk_check_menu_item_get_active" gtk)
 (define-gtk gtk-check-menu-item-set-active (:pointer :boolean) :void
    "gtk_check_menu_item_set_active" gtk)
+(define-gtk  gtk-separator-menu-item-new () :pointer
+  "gtk_separator_menu_item_new" gtk)
+(define-gtk gtk-tearoff-menu-item-new () :pointer
+  "gtk_tearoff_menu_item_new" gtk)
+(define-gtk gtk-check-menu-item-new () :pointer
+  "gtk_check_menu_item_new" gtk)
+(define-gtk gtk-radio-menu-item-new (:pointer) :pointer
+  "gtk_radio_menu_item_new" gtk)
+(define-gtk gtk-radio-menu-item-new-from-widget (:pointer) :pointer
+  "gtk_radio_menu_item_new_from_widget" gtk)
 (define-gtk gtk-menu-popup (:pointer :pointer :pointer :pointer :pointer :long :long)
   :void
   "gtk_menu_popup" gtk)
@@ -811,6 +834,10 @@
    "gtk_progress_bar_set_text" gtk)
 (define-gtk gtk-progress-bar-set-fraction (:pointer :double) :void
    "gtk_progress_bar_set_fraction" gtk)
+(define-gtk gtk-progress-bar-get-orientation (:pointer) :int
+   "gtk_progress_bar_get_orientation" gtk)
+(define-gtk gtk-progress-bar-set-orientation (:pointer :int) :void
+   "gtk_progress_bar_set_orientation" gtk)
 (define-gtk gtk-progress-bar-pulse (:pointer) :void
    "gtk_progress_bar_pulse" gtk)
 (define-gtk gtk-progress-bar-set-pulse-step (:pointer :double) :void
@@ -819,6 +846,9 @@
    "gtk_progress_configure" gtk)
 (define-gtk gtk-progress-set-value (:pointer :double) :void
    "gtk_progress_set_value" gtk)
+(define-gtk gtk-progress-bar-set-bar-style (:pointer :int) :void
+   "gtk_progress_bar_set_bar_style" gtk)
+
 ;;;;
 ;;;; GTK_STATUS_BAR
 ;;;;
@@ -860,6 +890,13 @@
    "gtk_combo_box_get_active_text" gtk)
 (define-gtk gtk-combo-box-entry-new-text () :pointer
   "gtk_combo_box_entry_new_text" gtk)
+
+;;;;
+;;;; HANDLEBOX
+;;;;
+(define-gtk gtk-handle-box-new () :pointer
+   "gtk_handle_box_new" gtk)
+
 ;;;;
 ;;;; SEPARATORS
 ;;;;
@@ -1139,5 +1176,32 @@
    "g_free" glib)
 (define-gtk g-printf (:string) :void
    "g_printf" glib)
+
+;;;
+;;; Some hacks for quickly set properties of objects
+;;;
+(define-external %%g-objet-set-string (:pointer :string :string :pointer)
+  :return-type :void
+  :entry-name "g_object_set"
+  :library-name "/usr/lib/libgobject-2.0.so")
+
+(define-external %%g-objet-set-integer (:pointer :string :int :pointer)
+  :return-type :void
+  :entry-name "g_object_set"
+  :library-name "/usr/lib/libgobject-2.0.so")
+
+(define-external %%g-objet-set-double (:pointer :string :double :pointer)
+  :return-type :void
+  :entry-name "g_object_set"
+  :library-name "/usr/lib/libgobject-2.0.so")
+
+(define (%g-objet-set-string widget property value)
+  (%%g-objet-set-string widget property value (void)))
+
+(define (%g-objet-set-integer widget property value)
+  (%%g-objet-set-integer widget property value (void)))
+
+(define (%g-objet-set-double widget property value)
+  (%%g-objet-set-double widget property value (void)))
 
 (provide "stklos-gtk-base")

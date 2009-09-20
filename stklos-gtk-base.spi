@@ -1,7 +1,7 @@
 ;;;;
 ;;;; stklos-gtk-base.spi	-- STklos interface to GTK (base level)
 ;;;; 
-;;;; Copyright © 2007-2008 Erick Gallesio - I3S-CNRS/ESSI <eg@essi.fr>
+;;;; Copyright © 2007-2009 Erick Gallesio - I3S-CNRS/ESSI <eg@essi.fr>
 ;;;; 
 ;;;; 
 ;;;; This program is free software; you can redistribute it and/or modify
@@ -21,7 +21,7 @@
 ;;;; 
 ;;;;           Author: Erick Gallesio [eg@essi.fr]
 ;;;;    Creation date: 26-Jun-2007 15:19 (eg)
-;;;; Last file update: 20-Dec-2008 20:04 (eg)
+;;;; Last file update: 19-Aug-2009 19:22 (eg)
 ;;;;
 (interface stklos-gtk-base
   (language stklos)
@@ -46,13 +46,16 @@
      (gtk-window-maximize widget0)
 
      (gtk-message-dialog-new widget0 long1 long2 long3 string4)
+     (gtk-message-dialog-new-with-markup widget0 long1 long2 long3 string4)
      (gtk-window-set-icon-from-file widget0 string1 widget2)
      (gtk-window-set-keep-above widget0 boolean1)
      (gtk-window-set-keep-below widget0 boolean1)
      (gtk-about-dialog-set-version widget0 string1)
      (gtk-window-set-policy widget0 long1 long2 long3)
      (gtk-table-new long0 long1 boolean2)
-     (gtk-table-attach-defaults widget0 widget1 long2 long3 long4 long5)
+     (gtk-table-attach-defaults widget0 widget1 uint2 uint3 uint4 uint5)
+     (gtk-table-attach widget0 widget1 uint2 uint3 uint4 uint5 uint6 uint7
+		       uint8 uint9)
      (gtk-container-add widget0 widget1)
      (gtk-container-remove widget0 widget1)
      (gtk-container-set-border-width widget0 long1)
@@ -86,6 +89,8 @@
      (gtk-editable-get-chars widget0 long1 long2)
      (gtk-editable-set-editable widget0 boolean1)
      (gtk-editable-select-region widget0 long1 long2)
+     (gtk-editable-set-position widget0 long1)
+     (gtk-editable-get-position widget0)
      (gtk-text-buffer-new widget0)
      (gtk-text-buffer-set-text widget0 string1 long2)
      (gtk-text-buffer-insert-at-cursor widget0 string1 long2)
@@ -260,6 +265,7 @@
      (gtk-scale-set-draw-value widget0 boolean1)
      (gtk-scale-set-value-pos widget0 long1)
      (gtk-hscale-new widget0)
+     (gtk-vscale-new widget0)
      (gtk-hscale-new-with-range double0 double1 double2)
      (gtk-vscale-new-with-range double0 double1 double2)
      (gtk-spin-button-new widget0 double1 long2)
@@ -311,14 +317,22 @@
      (gtk-check-menu-item-new-with-mnemonic string0)
      (gtk-check-menu-item-get-active widget0)
      (gtk-check-menu-item-set-active widget0 boolean1)
+     (gtk-separator-menu-item-new)
+     (gtk-tearoff-menu-item-new)
+     (gtk-check-menu-item-new)
+     (gtk-radio-menu-item-new pointer0)
+     (gtk-radio-menu-item-new-from-widget widget0)
      (gtk-menu-popup widget0 widget1 widget2 widget3 widget4 long5 long6)
      (gtk-progress-bar-new)
      (gtk-progress-bar-set-text widget0 string1)
      (gtk-progress-bar-set-fraction widget0 double1)
+     (gtk-progress-bar-get-orientation widget0)
+     (gtk-progress-bar-set-orientation widget0 int1)
      (gtk-progress-bar-pulse widget0)
      (gtk-progress-bar-set-pulse-step widget0 double1)
      (gtk-progress-configure widget0 double1 double2 double3)
      (gtk-progress-set-value widget0 double1)
+     (gtk-progress-bar-set-bar-style widget0 int1)
      (gtk-statusbar-new)
      (gtk-statusbar-get-context-id widget0 string1)
      (gtk-statusbar-push widget0 long1 string2)
@@ -335,6 +349,7 @@
      (gtk-combo-box-set-active widget0 long1)
      (gtk-combo-box-get-active-text widget0)
      (gtk-combo-box-entry-new-text)
+     (gtk-handle-box-new)
      (gtk-vseparator-new)
      (gtk-hseparator-new)
      (gtk-editable-copy-clipboard widget0)
@@ -457,5 +472,12 @@
      (g-locale-to-utf8 string0 long1 widget2 widget3 widget4)
      (g-locale-from-utf8 string0 long1 widget2 widget3 widget4)
      (g-free widget0)
-     (g-printf string0))
+     (g-printf string0)
+
+     ;;
+     ;; Some hacks for quickly set properties of objects
+     ;;
+     (%g-objet-set-string widget property value)
+     (%g-objet-set-integer widget property value)
+     (%g-objet-set-double widget property value))
 )

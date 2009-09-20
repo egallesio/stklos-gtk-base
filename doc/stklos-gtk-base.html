@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<meta name="generator" content="AsciiDoc 8.3.0" />
+<meta name="generator" content="AsciiDoc 8.4.5" />
 <title>Documentation for stklos-gtk-base</title>
 <style type="text/css">
 /* Debug borders */
@@ -91,7 +91,7 @@ span#author {
 }
 span#email {
 }
-span#revision {
+span#revnumber, span#revdate, span#revremark {
   font-family: sans-serif;
 }
 
@@ -111,11 +111,13 @@ div#footer-badges {
   padding-bottom: 0.5em;
 }
 
-div#preamble,
+div#preamble {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
 div.tableblock, div.imageblock, div.exampleblock, div.verseblock,
 div.quoteblock, div.literalblock, div.listingblock, div.sidebarblock,
 div.admonitionblock {
-  margin-right: 10%;
   margin-top: 1.5em;
   margin-bottom: 1.5em;
 }
@@ -157,9 +159,6 @@ div.sidebarblock > div.content {
   padding: 0.5em;
 }
 
-div.listingblock {
-  margin-right: 0%;
-}
 div.listingblock > div.content {
   border: 1px solid silver;
   background: #f4f4f4;
@@ -168,6 +167,7 @@ div.listingblock > div.content {
 
 div.quoteblock {
   padding-left: 2.0em;
+  margin-right: 10%;
 }
 div.quoteblock > div.attribution {
   padding-top: 0.5em;
@@ -176,6 +176,7 @@ div.quoteblock > div.attribution {
 
 div.verseblock {
   padding-left: 2.0em;
+  margin-right: 10%;
 }
 div.verseblock > div.content {
   white-space: pre;
@@ -208,8 +209,8 @@ div.exampleblock > div.content {
 }
 
 div.imageblock div.content { padding-left: 0; }
-div.imageblock img { border: 1px solid silver; }
 span.image img { border-style: none; }
+a.image:visited { color: white; }
 
 dl {
   margin-top: 0.8em;
@@ -228,11 +229,20 @@ dd > *:first-child {
 ul, ol {
     list-style-position: outside;
 }
-div.olist > ol {
+ol.arabic {
   list-style-type: decimal;
 }
-div.olist2 > ol {
+ol.loweralpha {
   list-style-type: lower-alpha;
+}
+ol.upperalpha {
+  list-style-type: upper-alpha;
+}
+ol.lowerroman {
+  list-style-type: lower-roman;
+}
+ol.upperroman {
+  list-style-type: upper-roman;
 }
 
 div.compact ul, div.compact ol,
@@ -294,6 +304,10 @@ td.hdlist2 {
 div.hdlist.compact tr {
   margin: 0;
   padding-bottom: 0;
+}
+
+.comment {
+  background: yellow;
 }
 
 @media print {
@@ -366,14 +380,6 @@ div.exampleblock-content {
 
 /* IE6 sets dynamically generated links as visited. */
 div#toc a:visited { color: blue; }
-
-/* Because IE6 child selector is broken. */
-div.olist2 ol {
-  list-style-type: lower-alpha;
-}
-div.olist2 div.olist ol {
-  list-style-type: decimal;
-}
 </style>
 </head>
 <body>
@@ -764,6 +770,52 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="listingblock">
 <div class="content">
 <pre><tt>(gtk-message-dialog-new
+  widget0
+  long1
+  long2
+  long3
+  string4)</tt></pre>
+</div></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<strong>Parameters</strong>
+</dt>
+<dd>
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>widget0</strong>: todo
+</p>
+</li>
+<li>
+<p>
+<strong>long1</strong>: todo
+</p>
+</li>
+<li>
+<p>
+<strong>long2</strong>: todo
+</p>
+</li>
+<li>
+<p>
+<strong>long3</strong>: todo
+</p>
+</li>
+<li>
+<p>
+<strong>string4</strong>: todo
+</p>
+</li>
+</ul></div>
+</dd>
+</dl></div>
+</blockquote>
+<h3><a id="_gtk_message_dialog_new_2"></a>gtk-message-dialog-new</h3>
+<blockquote>
+<div class="listingblock">
+<div class="content">
+<pre><tt>(gtk-message-dialog-new-with-markup
   widget0
   long1
   long2
@@ -7504,6 +7556,41 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 </ul></div>
 </dd>
 </dl></div>
+<div class="paragraph"><p>gtk-separator-menu-item-new</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>---------------------------------------------------------
+(gtk-separator-menu-item-new)
+---------------------------------------------------------
+
+
+gtk-tearoff-menu-item-new</tt></pre>
+</div></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>(gtk-tearoff-menu-item-new)</tt></pre>
+</div></div>
+<div class="paragraph"><p>gtk-check-menu-item-new</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>---------------------------------------------------------
+(gtk-check-menu-item-new)
+---------------------------------------------------------
+
+
+gtk-radio-menu-item-new-from-widget</tt></pre>
+</div></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>(gtk-radio-menu-item-new-from-widget widget0)</tt></pre>
+</div></div>
+</blockquote>
+<h3><a id="_gtk_radio_menu_item_new"></a>gtk-radio-menu-item-new</h3>
+<blockquote>
+<div class="listingblock">
+<div class="content">
+<pre><tt>(gtk-radio-menu-item-new pointer0)</tt></pre>
+</div></div>
 </blockquote>
 <h3><a id="_gtk_check_menu_item_set_active"></a>gtk-check-menu-item-set-active</h3>
 <blockquote>
@@ -7755,6 +7842,32 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <li>
 <p>
 <strong>double1</strong>: todo
+</p>
+</li>
+</ul></div>
+</dd>
+</dl></div>
+</blockquote>
+<h3><a id="_gtk_progress_bar_set_bar_style"></a>gtk-progress-bar-set-bar-style</h3>
+<blockquote>
+<div class="listingblock">
+<div class="content">
+<pre><tt>(gtk-progress-bar-set-bar-style widget0 int1)</tt></pre>
+</div></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<strong>Parameters</strong>
+</dt>
+<dd>
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>widget0</strong>: todo
+</p>
+</li>
+<li>
+<p>
+<strong>int1</strong>: todo
 </p>
 </li>
 </ul></div>
@@ -8106,6 +8219,13 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 <div class="listingblock">
 <div class="content">
 <pre><tt>(gtk-combo-box-entry-new-text)</tt></pre>
+</div></div>
+</blockquote>
+<h3><a id="_gtk_handle_box_new"></a>gtk-handle-box-new</h3>
+<blockquote>
+<div class="listingblock">
+<div class="content">
+<pre><tt>(gtk-handle-box-new)</tt></pre>
 </div></div>
 </blockquote>
 <h3><a id="_gtk_vseparator_new"></a>gtk-vseparator-new</h3>
@@ -11065,7 +11185,7 @@ the <a href="http://www.stklos.org/Wiki/index.php/GUI/GTkBase">STklos Wiki</a></
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2008-12-20 20:07:33 CEST
+Last updated 2009-08-14 18:00:46 CEST
 </div>
 </div>
 </body>
