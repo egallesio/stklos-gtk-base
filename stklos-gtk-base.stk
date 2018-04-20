@@ -1,7 +1,7 @@
 ;;;;
 ;;;; stklos-gtk-base.stk	-- STklos interface to GTK (base level)
 ;;;; 
-;;;; Copyright © 2007-2009 Erick Gallesio - I3S-CNRS/ESSI <eg@essi.fr>
+;;;; Copyright © 2007-2010 Erick Gallesio - I3S-CNRS/ESSI <eg@essi.fr>
 ;;;; 
 ;;;; 
 ;;;; This program is free software; you can redistribute it and/or modify
@@ -21,7 +21,7 @@
 ;;;; 
 ;;;;           Author: Erick Gallesio [eg@essi.fr]
 ;;;;    Creation date: 26-Jun-2007 15:19 (eg)
-;;;; Last file update: 19-Aug-2009 19:22 (eg)
+;;;; Last file update: 23-Aug-2010 19:09 (eg)
 ;;;;
 
 (when-load-and-compile 
@@ -54,10 +54,10 @@
 
 (when-compile 
  (define-macro (define-gtk name args return-type entry-name lib)
-   ;;  (define (pretty lst)
-   ;;    (map (lambda (x y) (format "~a~a" (if (eq? x ':pointer) 'widget x) y))
-   ;;	 lst
-   ;;	 (iota (length lst))))
+     (define (pretty lst)
+       (map (lambda (x y) (format "~a~a" (if (eq? x ':pointer) 'widget x) y))
+   	 lst
+   	 (iota (length lst))))
    `(begin
       ;;(eprintf "  ~A\n" (cons ',name ',(pretty args)))
       (define-external ,name ,args
@@ -114,10 +114,9 @@
 
 (define (%g-signal-connect widget name proc data after)
   (let ((cb (make-callback proc
-			   (map (lambda (x) (ffi:arg-type->number x #t))
-				(if (member name *event-name*)
-				    '(:pointer :pointer)
-				    '(:pointer)))
+			   (if (member name *event-name*)
+			       '(:pointer :pointer)
+			       '(:pointer))
 			   data)))
     ;; This call correspond to the C call
     ;;     g_signal_connect_swapped(widget, name, callback, cb);
@@ -1180,20 +1179,14 @@
 ;;;
 ;;; Some hacks for quickly set properties of objects
 ;;;
-(define-external %%g-objet-set-string (:pointer :string :string :pointer)
-  :return-type :void
-  :entry-name "g_object_set"
-  :library-name "/usr/lib/libgobject-2.0.so")
+(define-gtk %%g-objet-set-string (:pointer :string :string :pointer) :void
+  "g_object_set" gobject)
 
-(define-external %%g-objet-set-integer (:pointer :string :int :pointer)
-  :return-type :void
-  :entry-name "g_object_set"
-  :library-name "/usr/lib/libgobject-2.0.so")
+(define-gtk %%g-objet-set-integer (:pointer :string :int :pointer) :void
+  "g_object_set" gobject)
 
-(define-external %%g-objet-set-double (:pointer :string :double :pointer)
-  :return-type :void
-  :entry-name "g_object_set"
-  :library-name "/usr/lib/libgobject-2.0.so")
+(define-gtk %%g-objet-set-double (:pointer :string :double :pointer) :void
+  "g_object_set" gobject)
 
 (define (%g-objet-set-string widget property value)
   (%%g-objet-set-string widget property value (void)))
